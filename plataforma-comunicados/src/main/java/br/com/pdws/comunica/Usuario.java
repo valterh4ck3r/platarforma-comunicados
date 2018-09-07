@@ -6,20 +6,19 @@
 package br.com.pdws.comunica;
 
 import java.io.Serializable;
-import javax.validation.constraints.NotBlank;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -45,6 +44,16 @@ public abstract class Usuario implements Serializable {
     @NotNull
     @Column(name = "TXT_CARGO")
     protected String cargo;
+
+    @ManyToMany(mappedBy = "usuarios", cascade = {CascadeType.PERSIST})
+    private List<Tag> tags;
+    
+    @OneToMany(mappedBy = "comunicado", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comunicado> comunicados;
+    
+    @ManyToMany(mappedBy = "usuarios")
+    private List<Comentario> comentarios;
 
     public Long getId() {
         return id;
@@ -78,5 +87,29 @@ public abstract class Usuario implements Serializable {
         this.cargo = cargo;
     }
 
- 
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
+    public List<Comunicado> getComunicados() {
+        return comunicados;
+    }
+
+    public void setComunicados(List<Comunicado> comunicados) {
+        this.comunicados = comunicados;
+    }
+
+    public List<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+   
 }

@@ -6,11 +6,14 @@
 package br.com.pdws.comunica;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
+import javax.persistence.ManyToMany;
+import org.hibernate.validator.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 /**
@@ -27,6 +30,9 @@ public class Comentario implements Serializable {
     @Size(min = 2, max = 50)
     @Column(name = "TXT_TEXTO", nullable = false, length = 50)
     private String texto;
+    
+    @ManyToMany(mappedBy = "comunicado", cascade = {CascadeType.PERSIST})
+    private List<Comunicado> comunicados;
 
     public Long getId() {
         return id;
@@ -42,6 +48,14 @@ public class Comentario implements Serializable {
 
     public void setTexto(String texto) {
         this.texto = texto;
+    }
+
+    public List<Comunicado> getComunicados() {
+        return comunicados;
+    }
+
+    public void setComunicados(List<Comunicado> comunicados) {
+        this.comunicados = comunicados;
     }
     
     
