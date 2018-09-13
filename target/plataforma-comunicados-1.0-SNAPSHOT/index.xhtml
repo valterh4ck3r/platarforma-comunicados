@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Comunica - Página Inicial</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="css/paginaInicial.css"/>
+        <script type="text/javascript" src="javascript/paginaInicial.js"></script>
+    </h:head>
+    <h:body>
+        <nav>
+            <ul>Comunica</ul>
+        </nav>
+        <h:form id="formLogin">
+            <h:outputLabel value="Login:" for="login"> 
+                <h:inputText id="login" title="login" required="true" 
+                             requiredMessage="O campo login deve ser preenchido"></h:inputText>
+                <h:message for="login" errorStyle="color:darkred;font-size:12pt;"></h:message>
+            </h:outputLabel>
+            <br/>
+            <h:outputLabel value="Senha:" for="senha"> 
+                <h:inputText id="senha" title="senha" required="true" 
+                             requiredMessage="O campo senha deve ser preenchido"></h:inputText>
+                <h:message for="senha" errorStyle="color:darkred;font-size:12pt;"></h:message>
+            </h:outputLabel>
+            <br/>
+            <p>
+                <h:commandButton id="buttonFormRegister" value="Cadastrar" class="buttonFormRegister"></h:commandButton>
+                <h:commandButton id="buttonLogin" value="Entrar" class="buttonLogin"></h:commandButton>
+            </p>
+        </h:form> 
+    </h:body>
+</html>
