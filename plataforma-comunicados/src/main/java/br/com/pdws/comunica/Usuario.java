@@ -6,16 +6,16 @@
 package br.com.pdws.comunica;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.CascadeType;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -24,13 +24,52 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "TB_USUARIO")
-public abstract class Usuario implements Serializable {
+@Access(AccessType.FIELD)
+@NamedQueries(
+        {
+            @NamedQuery(
+                    name = Usuario.USUARIO_POR_EMAIL,
+                    query = "SELECT u FROM Usuario u WHERE u.email LIKE ?1"
+            )
+            ,
+            @NamedQuery(
+                    name = Usuario.USUARIO_POR_ID,
+                    query = "SELECT u FROM Usuario u WHERE u.id LIKE ?1"
+            )
+            ,
+            @NamedQuery(
+                    name = Usuario.USUARIO_POR_LETRA,
+                    query ="SELECT u FROM Usuario u WHERE u.name LIKE ?1 ORDER BY u.id"
+            )
+            ,            
+            @NamedQuery(
+                    name = Usuario.USUARIO_POR_NOME,
+                    query = "SELECT u FROM Usuario u WHERE u.name LIKE ?1 ORDER BY u.id"
+            )
+            ,            
+            @NamedQuery(
+                    name = Usuario.TODOS_USUARIOS,
+                    query = "SELECT u FROM Usuario u"
+            )
+            ,            
+            @NamedQuery(
+                    name = Usuario.USUARIO_POR_CPF,
+                    query = "SELECT u FROM Usuario u WHERE u.cpf LIKE ?1"
+            )
+        }
+)
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "DISC_USUARIO",
+        discriminatorType = DiscriminatorType.STRING, length = 1)
+public class Usuario extends Entidade implements Serializable {
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = IDENTITY)
-    private Long id;
-
+    public static final String USUARIO_POR_NOME = "UserPorNome";
+    public static final String USUARIO_POR_EMAIL = "UserPorEmail";
+    public static final String USUARIO_POR_LETRA = "UserPorLetra";
+    public static final String USUARIO_POR_ID = "UserPorId";
+    public static final String TODOS_USUARIOS = "AllUsers";
+    public static final String USUARIO_POR_CPF = "UserPorCpf";
+    
     @NotBlank
     @Size(min = 2, max = 50)
     @Column(name = "TXT_NOME", nullable = false, length = 50)
@@ -42,27 +81,17 @@ public abstract class Usuario implements Serializable {
     protected String email;
     
     @NotNull
-    @Column(name = "TXT_CARGO")
-    protected String cargo;
-
-    @ManyToMany(mappedBy = "usuarios", cascade = {CascadeType.PERSIST})
-    private List<Tag> tags;
+    @Column(name = "TXT_SENHA", length = 30, nullable = false)
+    protected String senha;
     
-    @OneToMany(mappedBy = "comunicado", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comunicado> comunicados;
+    @NotNull
+    @Column(name = "TXT_CURSO")
+    protected String curso;   
     
-    @ManyToMany(mappedBy = "usuarios")
-    private List<Comentario> comentarios;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+    @NotNull
+    @Column(name = "TXT_CPF")
+    protected String cpf;    
+    
     public String getName() {
         return name;
     }
@@ -79,37 +108,30 @@ public abstract class Usuario implements Serializable {
         this.email = email;
     }
 
-    public String getCargo() {
-        return cargo;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
-    public List<Tag> getTags() {
-        return tags;
+    public String getCurso() {
+        return curso;
     }
 
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
+    public void setCurso(String curso) {
+        this.curso = curso;
     }
 
-    public List<Comunicado> getComunicados() {
-        return comunicados;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setComunicados(List<Comunicado> comunicados) {
-        this.comunicados = comunicados;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public List<Comentario> getComentarios() {
-        return comentarios;
-    }
-
-    public void setComentarios(List<Comentario> comentarios) {
-        this.comentarios = comentarios;
-    }
-
+    
    
 }

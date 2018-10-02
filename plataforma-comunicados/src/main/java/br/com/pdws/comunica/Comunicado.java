@@ -6,20 +6,20 @@
 package br.com.pdws.comunica;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -28,41 +28,33 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "TB_COMUNICADO")
-public class Comunicado implements Serializable {
-
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = IDENTITY)
-    private Long id;
+public class Comunicado extends Entidade implements Serializable {
 
     @NotBlank
-    @Size(min = 2, max = 50)
-    @Column(name = "TXT_TEXTO", nullable = false, length = 50)
+    @Size(min = 2, max = 255)
+    @Column(name = "TXT_TEXTO", nullable = false, length = 255)
     private String texto;
 
-    @NotNull
-    @Column(name = "TXT_COMENTARIO", length = 30, nullable = false)
-    protected String comentario;
+    @ElementCollection
+    @CollectionTable(name = "TB_TAGS",
+            joinColumns = @JoinColumn(name = "ID"))
+    @Column(name = "TXT_TAGS")
+    protected Collection<String> tags;
 
-    // Para fazer mapeamento
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "TB_COMUNICADOS_COMENTARIOS", joinColumns = {
-        @JoinColumn(name = "ID_COMUNICADO")},
-            inverseJoinColumns = {
-                @JoinColumn(name = "ID_COMENTARIO")})
+    @OneToMany(mappedBy = "comunicado", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comentario> comentarios;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ID_USUARIO", referencedColumnName
-            = "ID_USUAIRO")
-    private Usuario usuario;
+    @JoinColumn(name = "ID_PROFESSOR", referencedColumnName = "ID")
+    private Professor professor;
 
-    public Long getId() {
-        return id;
+    public Professor getProfessor() {
+        return professor;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 
     public String getTexto() {
@@ -73,14 +65,6 @@ public class Comunicado implements Serializable {
         this.texto = texto;
     }
 
-    public String getComentario() {
-        return comentario;
-    }
-
-    public void setComentario(String comentario) {
-        this.comentario = comentario;
-    }
-
     public List<Comentario> getComentarios() {
         return comentarios;
     }
@@ -89,14 +73,15 @@ public class Comunicado implements Serializable {
         this.comentarios = comentarios;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Collection<String> getTags() {
+        return tags;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void addTags(String tag) {
+        if (tags == null) {
+            tags = new HashSet<>();
+        }
+        tags.add(tag);
     }
-
- 
 
 }
