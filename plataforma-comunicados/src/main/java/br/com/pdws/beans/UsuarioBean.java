@@ -74,8 +74,6 @@ public class UsuarioBean implements Serializable {
             + "  " + this.aluno.getEmail() + "  " + this.aluno.getSenha());
 
         this.alunoServico.persistence(this.aluno);
-        System.out.println("testou");
-       // addMessage("Usuario cadastrado com sucesso!");
 
     }
     
