@@ -86,6 +86,7 @@ public class UsuarioBean implements Serializable {
         this.professor.setSiape(siape);
         this.professor.setCurso(curso);
         this.professor.setEmail(email);
+        this.professor.setSenha(senha);
 
         this.professorServico.persistence(this.professor);
     }
