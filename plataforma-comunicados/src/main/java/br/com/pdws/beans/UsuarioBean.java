@@ -41,6 +41,7 @@ public class UsuarioBean implements Serializable {
     
     @PostConstruct
     public void iniciar() {
+        
         aluno = alunoServico.create();
         professor = professorServico.create();
         tipo = new String();
@@ -49,6 +50,7 @@ public class UsuarioBean implements Serializable {
     }
     
     public void checaTipoUsuario(){
+        
         if(this.tipo.equals("Estudante")){
             
             salvarAluno();
@@ -61,34 +63,31 @@ public class UsuarioBean implements Serializable {
 
     public void salvarAluno() {
         
-        aluno.setName(nome);
-        aluno.setCpf(cpf);
-        aluno.setCurso(curso);
-        aluno.setEmail(email);
-        aluno.setMatricula(matricula);
-        aluno.setSenha(senha);
+        this.aluno.setName(nome);
+        this.aluno.setCpf(cpf);
+        this.aluno.setCurso(curso);
+        this.aluno.setEmail(email);
+        this.aluno.setMatricula(matricula);
+        this.aluno.setSenha(senha);
         
-        System.out.println(aluno.getName() +" "+ aluno.getCpf() + " " + aluno.getCurso()
-            + "  " + aluno.getEmail() + "  " + aluno.getSenha());
+        System.out.println(this.aluno.getName() +" "+ this.aluno.getCpf() + " " + this.aluno.getCurso()
+            + "  " + this.aluno.getEmail() + "  " + this.aluno.getSenha());
 
-        alunoServico.persistence(aluno);
-        aluno = new Aluno();
+        this.alunoServico.persistence(this.aluno);
         System.out.println("testou");
        // addMessage("Usuario cadastrado com sucesso!");
-        
-        alunoServico = null;
+
     }
     
     public void salvarProfessor(){
         
-        professor.setName(nome);
-        professor.setCpf(cpf);
-        professor.setSiape(siape);
-        professor.setCurso(curso);
-        professor.setEmail(email);
+        this.professor.setName(nome);
+        this.professor.setCpf(cpf);
+        this.professor.setSiape(siape);
+        this.professor.setCurso(curso);
+        this.professor.setEmail(email);
 
-        professorServico.persistence(professor);
-        professor = new Professor();
+        this.professorServico.persistence(this.professor);
     }
 
     public void setAluno(Aluno aluno) {
