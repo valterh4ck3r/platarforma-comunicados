@@ -7,7 +7,6 @@ package br.com.pdws.beans;
 
 import br.com.pdws.comunica.Aluno;
 import br.com.pdws.comunica.Professor;
-import br.com.pdws.comunica.Usuario;
 import br.com.pdws.servico.AlunoServico;
 import br.com.pdws.servico.ProfessorServico;
 import java.io.Serializable;
@@ -25,6 +24,11 @@ import javax.faces.bean.RequestScoped;
 public class UsuarioBean implements Serializable {
    
     private Aluno aluno;
+    private String nome;
+    private String email;
+    private String cpf;
+    private String curso;
+    private String senha;
     private Professor professor;
     private String tipo;
     private String matricula;
@@ -47,81 +51,94 @@ public class UsuarioBean implements Serializable {
     public void checaTipoUsuario(){
         if(this.tipo.equals("Estudante")){
             
-            this.aluno.setMatricula(this.matricula);
             salvarAluno();
+            
         }else if(this.tipo.equals("Professor")){
-            this.professor.setSiape(this.siape);
-            this.professor.setCurso(this.aluno.getCurso());
-            this.professor.setCpf(this.aluno.getCpf());
-            this.professor.setName(this.aluno.getName());
-            this.professor.setEmail(this.aluno.getEmail());
-            this.professor.setSenha(this.aluno.getSenha());
+           
             salvarProfessor();
         }
     }
 
     public void salvarAluno() {
-        System.out.println(this.aluno.getName() +" "+ this.aluno.getCpf() + " " + this.aluno.getCurso()
-            + "  " + this.aluno.getEmail() + "  " + this.aluno.getSenha());
-        this.aluno.setMatricula(this.matricula);
-        this.alunoServico.persistence(this.aluno);
-        this.aluno = new Aluno();
+        
+        aluno.setName(nome);
+        aluno.setCpf(cpf);
+        aluno.setCurso(curso);
+        aluno.setEmail(email);
+        aluno.setMatricula(matricula);
+        aluno.setSenha(senha);
+        
+        System.out.println(aluno.getName() +" "+ aluno.getCpf() + " " + aluno.getCurso()
+            + "  " + aluno.getEmail() + "  " + aluno.getSenha());
+
+        alunoServico.persistence(aluno);
+        aluno = new Aluno();
         System.out.println("testou");
        // addMessage("Usuario cadastrado com sucesso!");
         
-        this.alunoServico = null;
+        alunoServico = null;
     }
     
     public void salvarProfessor(){
-        this.professorServico.persistence(this.professor);
-        this.professor = new Professor();
-        this.professorServico.persistence(this.professor);
-        this.professor = new Professor();
-    }
+        
+        professor.setName(nome);
+        professor.setCpf(cpf);
+        professor.setSiape(siape);
+        professor.setCurso(curso);
+        professor.setEmail(email);
 
-    public Aluno getAluno() {
-        return aluno;
+        professorServico.persistence(professor);
+        professor = new Professor();
     }
 
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
 
-    public Professor getProfessor() {
-        return professor;
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public void setProfessor(Professor professor) {
         this.professor = professor;
     }
 
-
-    public String getTipo() {
-        return tipo;
-    }
-
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public String getMatricula() {
-        return matricula;
     }
 
     public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 
-    public String getSiape() {
-        return siape;
-    }
-
     public void setSiape(String siape) {
         this.siape = siape;
     }
+
+    public void setAlunoServico(AlunoServico alunoServico) {
+        this.alunoServico = alunoServico;
+    }
+
+    public void setProfessorServico(ProfessorServico professorServico) {
+        this.professorServico = professorServico;
+    }
     
     
-   
- 
     
 }

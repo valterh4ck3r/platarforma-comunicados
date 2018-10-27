@@ -53,7 +53,7 @@
         <h:form id="formRegister">
             <legend>Cadastrar no Comunica</legend>
             <h:outputLabel value="Nome:" for="nameRegister"> 
-                <h:inputText id="nameRegister" value="#{usuarioBean.aluno.name}" title="name" required="true" 
+                <h:inputText id="nameRegister" value="#{usuarioBean.nome}" title="name" required="true" 
                              requiredMessage="O campo nome deve ser preenchido"></h:inputText>
                 
             </h:outputLabel>
@@ -61,7 +61,7 @@
             <h:message for="nameRegister" errorStyle="color:darkred;font-size:12pt;"></h:message>
             <br/>
             <h:outputLabel value="E-mail:" for="emailRegister"> 
-                <h:inputText id="emailRegister" value="#{usuarioBean.aluno.email}" title="email" required="true" 
+                <h:inputText id="emailRegister" value="#{usuarioBean.email}" title="email" required="true" 
                              requiredMessage="O campo e-mail deve ser preenchido"></h:inputText>
                 
             </h:outputLabel>
@@ -80,18 +80,18 @@
             </h:outputLabel>
             <br/>
              <h:outputLabel value="CPF:" for="cpfRegister"> 
-                 <h:inputText id="cpfRegister" value="#{usuarioBean.aluno.cpf}" title="cpf" required="true" 
+                 <h:inputText id="cpfRegister" value="#{usuarioBean.cpf}" title="cpf" required="true" 
                              requiredMessage="O campo cpf deve ser preenchido"></h:inputText>
                 
             </h:outputLabel>
              <h:outputLabel value="Curso" for="cursoRegister"> 
-                 <h:inputText id="cursoRegister" value="#{usuarioBean.aluno.curso}" title="curso" required="true" 
+                 <h:inputText id="cursoRegister" value="#{usuarioBean.curso}" title="curso" required="true" 
                              requiredMessage="O campo curso deve ser preenchido"></h:inputText>
                 
             </h:outputLabel>
             <br/>
             <h:outputLabel value="Senha:" for="senhaRegister"> 
-                <h:inputSecret id="senhaRegister" value="#{usuarioBean.aluno.senha}" title="senha" required="true"
+                <h:inputSecret id="senhaRegister" value="#{usuarioBean.senha}" title="senha" required="true"
                                requiredMessage="O campo senha deve ser preenchido"></h:inputSecret>>
             </h:outputLabel>
             <br/>
