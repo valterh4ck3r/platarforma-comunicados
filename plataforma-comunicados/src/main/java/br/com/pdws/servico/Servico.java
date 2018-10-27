@@ -8,7 +8,10 @@ package br.com.pdws.servico;
 import java.util.List;
 import javax.ejb.TransactionAttribute;
 import static javax.ejb.TransactionAttributeType.NOT_SUPPORTED;
+import static javax.ejb.TransactionAttributeType.REQUIRED;
 import static javax.ejb.TransactionAttributeType.SUPPORTS;
+import javax.ejb.TransactionManagement;
+import static javax.ejb.TransactionManagementType.CONTAINER;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import static javax.persistence.PersistenceContextType.TRANSACTION;
@@ -17,13 +20,11 @@ import javax.persistence.TypedQuery;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-/**
- *
- * @author Usuario
- */
+@TransactionManagement(CONTAINER)
+@TransactionAttribute(REQUIRED)
 public abstract class Servico<T> {
- 
-    @PersistenceContext(name = "br.com.descorp_Comunica", type = TRANSACTION)
+
+    @PersistenceContext(name = "comunica_db", type = TRANSACTION)
     protected EntityManager entityManager;
     protected Class<T> classe;
 
@@ -41,9 +42,7 @@ public abstract class Servico<T> {
     }
 
     public void persistence(@Valid T entidade) {
-        if (!exist(entidade)) {
-            entityManager.persist(entidade);
-        }
+        entityManager.persist(entidade);
     }
 
     public void update(@Valid T entidade) {
@@ -52,7 +51,6 @@ public abstract class Servico<T> {
             entityManager.flush();
         }
     }
-
 
     public void delete(@Valid T entidade) {
         if (exist(entidade)) {

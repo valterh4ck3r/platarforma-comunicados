@@ -12,6 +12,8 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -22,24 +24,35 @@ import javax.validation.constraints.NotNull;
  * @author bernardes
  */
 @Entity
-@Table(name = "TB_ALUNO")
+@Table(name="TB_ALUNO")
 @DiscriminatorValue(value = "A")
-@PrimaryKeyJoinColumn(name = "ID_ALUNO", referencedColumnName = "ID")
+@PrimaryKeyJoinColumn(name="ID_ALUNO", referencedColumnName = "ID")
+@NamedQueries(
+    {
+        @NamedQuery(
+                name = Aluno.TODOS_ALUNOS,
+                query = "SELECT a FROM Aluno a"
+        )
+    
+    }
+)
 public class Aluno extends Usuario implements Serializable {
-
+    
+    public static final String TODOS_ALUNOS = "TodosAlunos";
+    
     @NotNull
     @Column(name = "TXT_MATRICULA", length = 14, nullable = false)
-    private int matricula;
+    private String matricula;
 
     @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL, targetEntity = Comentario.class,
             orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Comentario> comentarios;
 
-    public int getMatricula() {
+    public String getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 
@@ -51,4 +64,6 @@ public class Aluno extends Usuario implements Serializable {
         this.comentarios = comentarios;
     }
 
+
+    
 }

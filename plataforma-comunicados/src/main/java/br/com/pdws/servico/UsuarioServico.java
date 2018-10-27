@@ -27,14 +27,9 @@ public class UsuarioServico extends Servico<Usuario> {
     }
 
     @Override
-    public Usuario create() {
-        return new Usuario();
-    }
-
-    @Override
     public boolean exist(@NotNull Usuario usuario) {
-        TypedQuery<Usuario> query
-                = entityManager.createNamedQuery(Usuario.USUARIO_POR_ID, classe);
+        TypedQuery<Usuario> query;
+       query = entityManager.createNamedQuery(Usuario.USUARIO_POR_ID, classe);
         query.setParameter(1, usuario.getId());
         return !query.getResultList().isEmpty();
     }
@@ -60,6 +55,11 @@ public class UsuarioServico extends Servico<Usuario> {
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public Usuario getUserPorCPF(String cpf){
         return super.findEntity(new Object[]{cpf}, Usuario.USUARIO_POR_CPF);
+    }
+
+    @Override
+    public Usuario create() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

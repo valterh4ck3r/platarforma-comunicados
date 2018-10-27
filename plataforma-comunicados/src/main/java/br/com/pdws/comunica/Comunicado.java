@@ -15,6 +15,9 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -28,8 +31,12 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "TB_COMUNICADO")
-public class Comunicado extends Entidade implements Serializable {
+public class Comunicado implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long ID;
+    
     @NotBlank
     @Size(min = 2, max = 255)
     @Column(name = "TXT_TEXTO", nullable = false, length = 255)
@@ -38,6 +45,7 @@ public class Comunicado extends Entidade implements Serializable {
     @ElementCollection
     @CollectionTable(name = "TB_TAGS",
             joinColumns = @JoinColumn(name = "ID"))
+    
     @Column(name = "TXT_TAGS")
     protected Collection<String> tags;
 
@@ -49,6 +57,16 @@ public class Comunicado extends Entidade implements Serializable {
     @JoinColumn(name = "ID_PROFESSOR", referencedColumnName = "ID")
     private Professor professor;
 
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
+    
+    
     public Professor getProfessor() {
         return professor;
     }

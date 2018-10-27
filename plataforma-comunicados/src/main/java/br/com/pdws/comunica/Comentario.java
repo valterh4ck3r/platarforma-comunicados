@@ -10,6 +10,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -22,8 +25,12 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "TB_COMENTARIO")
-public class Comentario extends Entidade implements Serializable {
+public class Comentario implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long ID;
+    
     @NotBlank
     @Size(min = 2, max = 50)
     @Column(name = "TXT_TEXTO", nullable = false, length = 50)
@@ -37,6 +44,15 @@ public class Comentario extends Entidade implements Serializable {
     @JoinColumn(name = "ID_COMUNICADO", referencedColumnName = "ID")
     private Comunicado comunicado;
 
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
+    
     public String getTexto() {
         return texto;
     }
