@@ -137,6 +137,54 @@ public class UsuarioBean implements Serializable {
     public void setProfessorServico(ProfessorServico professorServico) {
         this.professorServico = professorServico;
     }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public String getSiape() {
+        return siape;
+    }
+
+    public AlunoServico getAlunoServico() {
+        return alunoServico;
+    }
+
+    public ProfessorServico getProfessorServico() {
+        return professorServico;
+    }
     
     
     

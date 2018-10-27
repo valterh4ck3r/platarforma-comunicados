@@ -53,7 +53,7 @@
         <h:form id="formRegister">
             <legend>Cadastrar no Comunica</legend>
             <h:outputLabel value="Nome:" for="nameRegister"> 
-                <h:inputText id="nameRegister" value="#{usuarioBean.setNome(nome)}" title="nome" required="true" 
+                <h:inputText id="nameRegister" value="#{usuarioBean.nome}" title="nome" required="true" 
                              requiredMessage="O campo nome deve ser preenchido"></h:inputText>
                 
             </h:outputLabel>
@@ -61,44 +61,44 @@
             <h:message for="nameRegister" errorStyle="color:darkred;font-size:12pt;"></h:message>
             <br/>
             <h:outputLabel value="E-mail:" for="emailRegister"> 
-                <h:inputText id="emailRegister" value="#{usuarioBean.setEmail(email)}" title="email" required="true" 
+                <h:inputText id="emailRegister" value="#{usuarioBean.email}" title="email" required="true" 
                              requiredMessage="O campo e-mail deve ser preenchido"></h:inputText>
                 
             </h:outputLabel>
             <br/>
    
               <h:outputLabel value="Matricula:" for="matriculaRegister"> 
-                  <h:inputText id="matriculaRegister" value="#{usuarioBean.setMatricula(matricula)}" title="matricula"
+                  <h:inputText id="matriculaRegister" value="#{usuarioBean.matricula}" title="matricula"
                              requiredMessage="O campo matricula deve ser preenchido"></h:inputText>
                 
             </h:outputLabel>
             <br/>
             <h:outputLabel value="Siape:" for="siapeRegister"> 
-                <h:inputText id="siapeRegister" value="#{usuarioBean.setSiape(siape)}" title="siape" 
+                <h:inputText id="siapeRegister" value="#{usuarioBean.siape}" title="siape" 
                              requiredMessage="O campo siape deve ser preenchido"></h:inputText>
                 
             </h:outputLabel>
             <br/>
              <h:outputLabel value="CPF:" for="cpfRegister"> 
-                 <h:inputText id="cpfRegister" value="#{usuarioBean.setCpf(cpf)}" title="cpf" required="true" 
+                 <h:inputText id="cpfRegister" value="#{usuarioBean.cpf}" title="cpf" required="true" 
                              requiredMessage="O campo cpf deve ser preenchido"></h:inputText>
                 
             </h:outputLabel>
              <h:outputLabel value="Curso" for="cursoRegister"> 
-                 <h:inputText id="cursoRegister" value="#{usuarioBean.setCurso(curso)}" title="curso" required="true" 
+                 <h:inputText id="cursoRegister" value="#{usuarioBean.curso}" title="curso" required="true" 
                              requiredMessage="O campo curso deve ser preenchido"></h:inputText>
                 
             </h:outputLabel>
             <br/>
             <h:outputLabel value="Senha:" for="senhaRegister"> 
-                <h:inputSecret id="senhaRegister" value="#{usuarioBean.setSenha(senha)}" title="senha" required="true"
+                <h:inputSecret id="senhaRegister" value="#{usuarioBean.senha}" title="senha" required="true"
                                requiredMessage="O campo senha deve ser preenchido"></h:inputSecret>>
             </h:outputLabel>
             <br/>
             <h:message for="senhaRegister" errorStyle="color:darkred;font-size:12pt;"></h:message>
             <br/>
             <h:outputLabel value="Tipo de vínculo:" for="vinculoRegister"> 
-                <h:selectOneRadio id="vinculoRegister" value="#{usuarioBean.setTipo(tipo)}" required="true"  
+                <h:selectOneRadio id="vinculoRegister" value="#{usuarioBean.tipo}" required="true"  
                                   requiredMessage="O campo vinculo deve ser preenchido">
                     <f:selectItem itemValue="Estudante" itemLabel="Estudante"/>
                     <f:selectItem itemValue="Professor"  itemLabel="Professor"/>
@@ -107,7 +107,7 @@
             </h:outputLabel>
             
             <p>
-                <h:commandButton value="Cadastrar" action="#{usuarioBean.salvarAluno()}" class="buttonRegister" ></h:commandButton>
+                <h:commandButton value="Cadastrar" action="#{usuarioBean.checaTipoUsuario()}" class="buttonRegister" ></h:commandButton>
             </p>
         </h:form>
     </h:body>
