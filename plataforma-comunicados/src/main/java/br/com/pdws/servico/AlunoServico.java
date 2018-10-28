@@ -5,7 +5,6 @@
  */
 package br.com.pdws.servico;
 import br.com.pdws.comunica.Aluno;
-import br.com.pdws.comunica.Usuario;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;

@@ -34,13 +34,13 @@
         <h:form id="formLogin">
             <legend>Entrar no Comunica</legend>
             <h:outputLabel value="Login:" for="login"> 
-                <h:inputText id="login" title="login" required="true" 
+                <h:inputText id="login" value="#{usuarioBean.email}" title="login" required="true" 
                              requiredMessage="O campo login deve ser preenchido"></h:inputText>
                 <h:message for="login" errorStyle="color:darkred;font-size:12pt;"></h:message>
             </h:outputLabel>
             <br/>
             <h:outputLabel value="Senha:" for="senha"> 
-                <h:inputText id="senha" title="senha" required="true" 
+                <h:inputText id="senha" value="#{usuarioBean.senha}" title="senha" required="true" 
                              requiredMessage="O campo senha deve ser preenchido"></h:inputText>
                 <h:message for="senha" errorStyle="color:darkred;font-size:12pt;"></h:message>
             </h:outputLabel>

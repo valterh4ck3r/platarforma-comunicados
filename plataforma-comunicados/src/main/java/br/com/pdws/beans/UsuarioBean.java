@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.pdws.beans;
 
 import br.com.pdws.comunica.Aluno;
 import br.com.pdws.comunica.Professor;
+import br.com.pdws.comunica.Usuario;
 import br.com.pdws.servico.AlunoServico;
 import br.com.pdws.servico.ProfessorServico;
+import br.com.pdws.servico.UsuarioServico;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -17,7 +14,7 @@ import javax.faces.bean.RequestScoped;
 
 /**
  *
- * @author isabella
+ * @author Leandro
  */
 @ManagedBean(name = "usuarioBean")
 @RequestScoped
@@ -38,6 +35,8 @@ public class UsuarioBean implements Serializable {
     AlunoServico alunoServico;
     @EJB
     ProfessorServico professorServico;
+    @EJB
+    UsuarioServico usuarioServico;
     
     @PostConstruct
     public void iniciar() {
@@ -49,6 +48,7 @@ public class UsuarioBean implements Serializable {
         siape = new String();
     }
     
+    //Verifica o tipo do o usuário a ser cadastrado e redireciona para o método de persistencia de acordo com o tipo
     public void checaTipoUsuario(){
         
         if(this.tipo.equals("Estudante")){
@@ -87,6 +87,17 @@ public class UsuarioBean implements Serializable {
         this.professor.setSenha(senha);
 
         this.professorServico.persistence(this.professor);
+    }
+    
+    //Esse método pega os dados do usuário, se houver
+    //PRECISA DE UM MÉTODO QUE REDIRECIONA PARA A PÁGINA APÓS O LOGIN OU TRATA O ERRO QUANDO NAO HOUVER USER CADASTRADO
+    public Usuario pegarUsuario(){
+        Usuario usuario = usuarioServico.getUserPorEmail(email);
+        
+            if(usuario != null && usuario.getSenha().equals(senha))
+                return usuario;
+            
+            return usuario;
     }
 
     public void setAluno(Aluno aluno) {
@@ -184,7 +195,5 @@ public class UsuarioBean implements Serializable {
     public ProfessorServico getProfessorServico() {
         return professorServico;
     }
-    
-    
-    
+   
 }
