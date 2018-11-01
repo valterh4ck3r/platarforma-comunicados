@@ -20,11 +20,35 @@
         text-align: center;
     }
 
+    #sub_menu, .menuRegister, .menuLogin
+    {
+        font-size: 16pt;
+        margin: 0px;
+        padding: 3px;
+        color: white;
+        background: #AE57FF;
+        font-weight: bold;
+        font-family: serif;
+        border: none;
+    }
+    
+    table tr td.firstLine
+    {
+       padding-right: 1em;
+       padding-left: 10px;
+    }
+    
+    a:link, a:visited, a:active
+    {
+        color: white;
+        text-decoration: none;
+    }
+    
     #formLogin
     {
         display: inline-block;
         padding: 1.5em 5% 3em 5%;
-        margin:8%;
+        margin:4.9%;
         color: white;
         font-weight: bold;
         font-family: serif;
@@ -36,6 +60,13 @@
         height: 170px;
     }
 
+    #esqueceuSenha:link, #esqueceuSenha:visited
+    {
+        font-size: 15pt;
+        font-family: sans-serif;
+        float: right;
+        margin-top: 8px;
+    }
     legend
     {
         margin-bottom: 1em;
@@ -131,5 +162,6 @@
         max-height: 170px;
     }
 }
+
 
 
