@@ -9,7 +9,6 @@
         <title>Comunica - Página Inicial</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" type="text/css" href="css/paginaInicial.css"/>
-        <script type="text/javascript" src="javascript/paginaInicial.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     </h:head>
     <h:body>
@@ -55,21 +54,19 @@
 
         </script>
         <nav>
-            <ul>
-                <a href="index.xhtml">Comunica</a>
-            </ul>
-         <!--    -->
-        </nav>
-        <nav>
           <table id="sub_menu">
                 <tr>
+                    <td> <a href="index.xhtml" id="homecomunica">Comunica</a></td>
                     <td class="firstLine">
                         <h:commandButton value="Cadastro" class="menuRegister"></h:commandButton>
                     </td>
                     <td>
                         <h:commandButton value="Login" class="menuLogin"></h:commandButton>
                     </td>
-                </tr>
+                  <!--  <td>
+                        <a href="feedProfessor.xhtml"> Feed Professor</a>
+                    </td> -->
+                </tr> 
             </table>
         </nav>
         <h:form id="formLogin">
