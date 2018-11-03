@@ -1,5 +1,5 @@
 /*Responsivo nos seguintes dispositivos: google chrome, tablets (paisagem e retrato), smartphone*/
-@media screen and (max-width: 100em),(max-width: 1024px), (max-width: 768px)
+@media screen and (max-width: 100em),(max-width: 1080px), (max-width: 1920px)
 {
     body
     {
@@ -41,6 +41,11 @@
     {
        padding-right: 1em;
        padding-left: 10px;
+    }
+    
+    .menuRegister
+    {
+       
     }
     
     a:link, a:visited, a:active
