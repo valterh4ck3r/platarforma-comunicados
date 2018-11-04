@@ -73,13 +73,13 @@
             <legend>Entrar no Comunica</legend>
             <h:outputLabel value="Login:" for="login"> 
                 <h:inputText id="login" title="login" required="true" 
-                             requiredMessage="O campo login deve ser preenchido"></h:inputText>
+                             requiredMessage="O campo login deve ser preenchido" value="#{usuarioBean.email}"></h:inputText>
                 <h:message for="login" errorStyle="color:darkred;font-size:12pt;"></h:message>
             </h:outputLabel>
             <br/>
             <h:outputLabel value="Senha:" for="senha"> 
                 <h:inputSecret id="senha" title="senha" required="true" 
-                               requiredMessage="O campo senha deve ser preenchido"></h:inputSecret>
+                               requiredMessage="O campo senha deve ser preenchido" value="#{usuarioBean.senha}"></h:inputSecret>
                 <h:message for="senha" errorStyle="color:darkred;font-size:12pt;"></h:message>
             </h:outputLabel>
             <br/>
@@ -94,7 +94,7 @@
             <legend>Cadastrar no Comunica</legend>
             <h:outputLabel value="Nome:" for="nameRegister"> 
                 <h:inputText id="nameRegister" title="name" required="true" pt:placeholder="Seu nome"
-                             requiredMessage="O campo nome deve ser preenchido"></h:inputText>
+                             requiredMessage="O campo nome deve ser preenchido" value="#{usuarioBean.nome}"></h:inputText>
                 
             </h:outputLabel>
             <br/>
@@ -102,7 +102,7 @@
             <br/>
             <h:outputLabel value="E-mail:" for="emailRegister"> 
                 <h:inputText id="emailRegister" title="email" required="true" pt:placeholder="maria@gmail.com"
-                             requiredMessage="O campo e-mail deve ser preenchido"></h:inputText>
+                             requiredMessage="O campo e-mail deve ser preenchido" value="#{usuarioBean.email}"></h:inputText>
                 
             </h:outputLabel>
             <br/>
@@ -110,22 +110,22 @@
             <br/>
             <h:outputLabel value="Senha:" for="senhaRegister"> 
                 <h:inputSecret id="senhaRegister" title="senha" required="true" pt:placeholder="Sua senha" 
-                               requiredMessage="O campo senha deve ser preenchido" ></h:inputSecret>
+                               requiredMessage="O campo senha deve ser preenchido" value="#{usuarioBean.senha}"></h:inputSecret>
             </h:outputLabel>
             <br/>
             <h:message for="senhaRegister" errorStyle="color:darkred;font-size:12pt;"></h:message>
             <br/>
             <h:outputLabel value="Tipo de vínculo:" for="vinculoRegister"> 
                 <h:selectOneRadio id="vinculoRegister" required="true"  
-                                  requiredMessage="O campo vinculo deve ser preenchido">
-                    <f:selectItem itemValue="Estudante" itemLabel="Estudante"/>
-                    <f:selectItem itemValue="Professor" itemLabel="Professor"/>
+                                  requiredMessage="O campo vinculo deve ser preenchido"  value="#{usuarioBean.tipo}">
+                    <f:selectItem itemValue="Estudante" itemLabel="Estudante" />
+                    <f:selectItem itemValue="Professor" itemLabel="Professor" />
                 </h:selectOneRadio>
                 <h:message for="senhaRegister" errorStyle="color:darkred;font-size:12pt;"></h:message>
             </h:outputLabel>
             
             <p>
-                <h:commandButton id="buttonRegister" value="Cadastrar" class="buttonRegister"></h:commandButton>
+                <h:commandButton id="buttonRegister" value="Cadastrar" class="buttonRegister" action="#{usuarioBean.checaTipoUsuario()}"></h:commandButton>
             </p>
         </h:form>
     </h:body>

@@ -30,7 +30,7 @@ public class UsuarioServico extends Servico<Usuario> {
     public boolean exist(@NotNull Usuario usuario) {
         TypedQuery<Usuario> query;
        query = entityManager.createNamedQuery(Usuario.USUARIO_POR_ID, classe);
-        query.setParameter(1, usuario.getId());
+        query.setParameter(1, usuario.getID());
         return !query.getResultList().isEmpty();
     }
     

@@ -22,6 +22,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 @Entity
 @Table(name = "TB_USUARIO")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -39,6 +40,7 @@ public abstract class Usuario implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long ID;
     
     @NotBlank
@@ -54,15 +56,7 @@ public abstract class Usuario implements Serializable {
     @NotNull
     @Column(name = "TXT_SENHA", length = 30, nullable = false)
     protected String senha;
-    
-    @NotNull
-    @Column(name = "TXT_CURSO")
-    protected String curso;   
-    
-    @NotNull
-    @Column(name = "TXT_CPF")
-    protected String cpf;    
-
+  
     public Long getID() {
         return ID;
     }
@@ -94,27 +88,4 @@ public abstract class Usuario implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-    public String getCurso() {
-        return curso;
-    }
-
-    public void setCurso(String curso) {
-        this.curso = curso;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public Object getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
-   
 }
