@@ -7,8 +7,9 @@ package br.com.pdws.comunica;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,12 +18,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="TB_PROFESSOR")
+@Table(name="TB_USUARIO")
 @DiscriminatorValue(value = "P")
-@PrimaryKeyJoinColumn(name="ID_PROFESSOR", referencedColumnName = "ID")
+@PrimaryKeyJoinColumn(name="ID", referencedColumnName = "ID")
 @NamedQueries(
     {
         @NamedQuery(
@@ -32,27 +32,15 @@ import javax.validation.constraints.NotNull;
     
     }
 )
+@Access(AccessType.FIELD)
 public class Professor extends Usuario implements Serializable {
     
     public static final String TODOS_PROFESSOR = "TodosProfessores";
-     
-    @NotNull
-    @Column(name = "TXT_SIAPE", length = 14, nullable = false)
-    private String siape;
 
    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL, targetEntity = Comunicado.class,
             orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Comunicado> comunicados;
    
-   
-    public String getSiape() {
-        return siape;
-    }
-
-    public void setSiape(String siape) {
-        this.siape = siape;
-    }
-
     public List<Comunicado> getComunicados() {
         return comunicados;
     }
@@ -60,6 +48,5 @@ public class Professor extends Usuario implements Serializable {
     public void setComunicados(List<Comunicado> comunicados) {
         this.comunicados = comunicados;
     }
-    
     
 }

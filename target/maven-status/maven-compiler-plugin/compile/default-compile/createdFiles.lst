@@ -1,7 +1,7 @@
 br/com/pdws/comunica/Comentario.class
 br/com/pdws/comunica/ValidaTag.class
-br/com/pdws/beans/UsuarioBean.class
 br/com/pdws/comunica/Comunicado.class
+br/com/pdws/beans/UsuarioBean.class
 br/com/pdws/comunica/Professor.class
 br/com/pdws/comunica/Usuario.class
 br/com/pdws/comunica/Entidade.class

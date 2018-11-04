@@ -23,13 +23,9 @@ public class UsuarioBean implements Serializable {
     private Aluno aluno;
     private String nome;
     private String email;
-    private String cpf;
-    private String curso;
     private String senha;
     private Professor professor;
     private String tipo;
-    private String matricula;
-    private String siape;
     
     @EJB
     AlunoServico alunoServico;
@@ -44,8 +40,6 @@ public class UsuarioBean implements Serializable {
         aluno = alunoServico.create();
         professor = professorServico.create();
         tipo = new String();
-        matricula = new String();
-        siape = new String();
     }
     
     //Verifica o tipo do o usuário a ser cadastrado e redireciona para o método de persistencia de acordo com o tipo
@@ -64,29 +58,26 @@ public class UsuarioBean implements Serializable {
     public void salvarAluno() {
         
         this.aluno.setName(nome);
-        this.aluno.setCpf(cpf);
-        this.aluno.setCurso(curso);
         this.aluno.setEmail(email);
-        this.aluno.setMatricula(matricula);
         this.aluno.setSenha(senha);
-        
-        System.out.println(this.aluno.getName() +" "+ this.aluno.getCpf() + " " + this.aluno.getCurso()
-            + "  " + this.aluno.getEmail() + "  " + this.aluno.getSenha());
 
         this.alunoServico.persistence(this.aluno);
+        setNome(null);
+        setEmail(null);
+        setSenha(null);
 
     }
     
     public void salvarProfessor(){
         
         this.professor.setName(nome);
-        this.professor.setCpf(cpf);
-        this.professor.setSiape(siape);
-        this.professor.setCurso(curso);
         this.professor.setEmail(email);
         this.professor.setSenha(senha);
 
         this.professorServico.persistence(this.professor);
+        setNome(null);
+        setEmail(null);
+        setSenha(null);
     }
     
     //Esse método pega os dados do usuário, se houver
@@ -112,14 +103,6 @@ public class UsuarioBean implements Serializable {
         this.email = email;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public void setCurso(String curso) {
-        this.curso = curso;
-    }
-
     public void setSenha(String senha) {
         this.senha = senha;
     }
@@ -130,14 +113,6 @@ public class UsuarioBean implements Serializable {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
-
-    public void setSiape(String siape) {
-        this.siape = siape;
     }
 
     public void setAlunoServico(AlunoServico alunoServico) {
@@ -160,14 +135,6 @@ public class UsuarioBean implements Serializable {
         return email;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public String getCurso() {
-        return curso;
-    }
-
     public String getSenha() {
         return senha;
     }
@@ -178,14 +145,6 @@ public class UsuarioBean implements Serializable {
 
     public String getTipo() {
         return tipo;
-    }
-
-    public String getMatricula() {
-        return matricula;
-    }
-
-    public String getSiape() {
-        return siape;
     }
 
     public AlunoServico getAlunoServico() {
