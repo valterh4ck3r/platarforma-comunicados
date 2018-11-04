@@ -54,7 +54,7 @@ public class Comunicado implements Serializable {
     private List<Comentario> comentarios;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ID_PROFESSOR", referencedColumnName = "ID")
+    @JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID")
     private Professor professor;
 
     public Long getID() {

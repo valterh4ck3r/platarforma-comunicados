@@ -74,7 +74,7 @@
             <h:outputLabel value="Login:" for="login"> 
                 <h:inputText id="login" title="login" required="true" 
                              requiredMessage="O campo login deve ser preenchido" value="#{usuarioBean.email}"></h:inputText>
-                <h:message for="login" errorStyle="color:darkred;font-size:12pt;"></h:message>
+                             <h:message for="login" errorStyle="color:darkred;font-size:12pt;" ></h:message>
             </h:outputLabel>
             <br/>
             <h:outputLabel value="Senha:" for="senha"> 
@@ -87,7 +87,7 @@
             <br/>
             <p>
                 <h:commandButton id="buttonFormRegister" value="Cadastrar" class="buttonFormRegister"></h:commandButton>
-                <h:commandButton id="buttonLogin" value="Entrar" class="buttonLogin"></h:commandButton>
+                <h:commandButton id="buttonLogin" value="Entrar" class="buttonLogin" actionListener="#{usuarioBean.pegarUsuario()}"></h:commandButton>
             </p>
         </h:form> 
         <h:form id="formRegister">

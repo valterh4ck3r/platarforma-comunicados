@@ -27,5 +27,5 @@ public class AlunoServico extends Servico<Aluno> {
     public List<Aluno> getAllAlunos(){
         return super.findEntities(Aluno.TODOS_ALUNOS);
     }
-    
+
 }
