@@ -3,10 +3,13 @@ package br.com.pdws.beans;
 import br.com.pdws.comunica.Aluno;
 import br.com.pdws.comunica.Professor;
 import br.com.pdws.comunica.Usuario;
+import br.com.pdws.excecoes.CadastroUsuarioException;
 import br.com.pdws.servico.AlunoServico;
 import br.com.pdws.servico.ProfessorServico;
 import br.com.pdws.servico.UsuarioServico;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -62,8 +65,14 @@ public class UsuarioBean implements Serializable {
         this.aluno.setEmail(email);
         this.aluno.setSenha(senha);
 
-       //if(alunoServico.getAllAlunos().contains(aluno))
-        this.alunoServico.persistence(this.aluno);
+        try {
+            
+            this.alunoServico.persistence(this.aluno);
+            
+        } catch (CadastroUsuarioException ex) {
+            
+            //Precisa tratar aqui!
+        }
         
         setNome(null);
         setEmail(null);
@@ -77,7 +86,15 @@ public class UsuarioBean implements Serializable {
         this.professor.setEmail(email);
         this.professor.setSenha(senha);
 
-        this.professorServico.persistence(this.professor);
+        try {
+            
+            this.professorServico.persistence(this.professor);
+            
+        } catch (CadastroUsuarioException ex) {
+            
+            //Precisa tratar aqui!
+        }
+        
         setNome(null);
         setEmail(null);
         setSenha(null);
