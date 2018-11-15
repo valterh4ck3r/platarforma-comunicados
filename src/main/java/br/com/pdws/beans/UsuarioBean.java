@@ -109,6 +109,8 @@ public class UsuarioBean implements Serializable {
                 
                 ObjetosSessaoManager.guardarObjetoSessao("usuario", usuario);
             
+            if(usuario.equals(Aluno.class))
+            
                 enviarParaFeed();
     }
 
