@@ -11,11 +11,20 @@ package br.com.pdws.excecoes;
  */
 public class CadastroUsuarioException extends Exception {
 
-       
+       private String mensagem;
 
-     public CadastroUsuarioException(String message) {
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    private void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
+
+     public CadastroUsuarioException() {
          
-         super(message);
+         setMensagem("\"E-mail já usado por outro usuário.\n" + "Favor utilizar outro.\"");
+         
 
     }
   
