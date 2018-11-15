@@ -7,14 +7,12 @@ import br.com.pdws.excecoes.CadastroUsuarioException;
 import br.com.pdws.servico.AlunoServico;
 import br.com.pdws.servico.ProfessorServico;
 import br.com.pdws.servico.UsuarioServico;
+import br.com.pdws.util.ObjetosSessaoManager;
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 
 /**
  *
@@ -30,6 +28,7 @@ public class UsuarioBean implements Serializable {
     private String senha;
     private Professor professor;
     private String tipo;
+    
     
     @EJB
     AlunoServico alunoServico;
@@ -102,13 +101,15 @@ public class UsuarioBean implements Serializable {
     
     //Esse método pega os dados do usuário, se houver
     //PRECISA DE UM MÉTODO QUE REDIRECIONA PARA A PÁGINA APÓS O LOGIN OU TRATA O ERRO QUANDO NAO HOUVER USER CADASTRADO
-    public Usuario pegarUsuario(){
+    public void pegarUsuario(){
+        
         Usuario usuario = usuarioServico.getUserPorEmail(email);
         
             if(usuario != null && usuario.getSenha().equals(senha))
-               FacesContext.getCurrentInstance().getExternalContext().getApplicationMap().put("usuario", usuario);
+                
+                ObjetosSessaoManager.guardarObjetoSessao("usuario", usuario);
             
-            return usuario;
+                enviarParaFeed();
     }
 
     public void setAluno(Aluno aluno) {
@@ -173,6 +174,11 @@ public class UsuarioBean implements Serializable {
 
     public ProfessorServico getProfessorServico() {
         return professorServico;
+    }
+
+    private String enviarParaFeed() {
+        
+           return "Feed?faces-redirect";
     }
    
 }

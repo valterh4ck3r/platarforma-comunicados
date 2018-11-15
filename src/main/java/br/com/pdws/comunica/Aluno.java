@@ -7,6 +7,7 @@ package br.com.pdws.comunica;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
@@ -53,6 +54,18 @@ public class Aluno extends Usuario implements Serializable {
         this.comentarios = comentarios;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        
+        return obj instanceof Aluno;
+        
+    }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 13 * hash + Objects.hashCode(this.comentarios);
+        return hash;
+    }
     
 }

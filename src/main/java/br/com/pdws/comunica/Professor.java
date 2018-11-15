@@ -7,6 +7,7 @@ package br.com.pdws.comunica;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
@@ -48,5 +49,19 @@ public class Professor extends Usuario implements Serializable {
     public void setComunicados(List<Comunicado> comunicados) {
         this.comunicados = comunicados;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Professor;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.comunicados);
+        return hash;
+    }
+    
+    
     
 }
