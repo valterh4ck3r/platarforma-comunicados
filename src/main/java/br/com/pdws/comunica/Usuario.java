@@ -72,22 +72,7 @@ public abstract class Usuario implements Serializable {
     @Column(name = "TXT_SENHA", length = 30, nullable = false)
     protected String senha;
   
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "DT_CRIACAO")
-    protected Date dataCriacao;    
     
-    @PrePersist
-    protected void setDataCriacao() {
-        this.setDataCriacao(new Date());
-    }
-    
-     public Date getDataCriacao() {
-        return dataCriacao;
-    }
-
-    public void setDataCriacao(Date dataCriacao) {
-        this.dataCriacao = dataCriacao;
-    }
     public Long getID() {
         return ID;
     }

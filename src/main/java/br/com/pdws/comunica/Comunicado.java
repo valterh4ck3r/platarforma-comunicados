@@ -7,6 +7,7 @@ package br.com.pdws.comunica;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -21,7 +22,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import org.hibernate.validator.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -57,6 +61,23 @@ public class Comunicado implements Serializable {
     @JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID")
     private Professor professor;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "DT_CRIACAO")
+    protected Date dataCriacao;    
+    
+    @PrePersist
+    protected void setDataCriacao() {
+        this.setDataCriacao(new Date());
+    }
+    
+     public Date getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(Date dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+    
     public Long getID() {
         return ID;
     }
