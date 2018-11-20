@@ -8,7 +8,7 @@
     <h:head>
         <title>Comunica - Página Inicial</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" type="text/css" href="css/paginaInicial.css"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     </h:head>
     <h:body>
@@ -57,15 +57,9 @@
           <table id="sub_menu">
                 <tr>
                     <td> <a href="index.xhtml" id="homecomunica">Comunica</a></td>
-                    <td class="firstLine">
-                        <h:commandButton value="Cadastro" class="menuRegister"></h:commandButton>
-                    </td>
-                    <td>
-                        <h:commandButton value="Login" class="menuLogin"></h:commandButton>
-                    </td>
-                    <td>
-                        <a href="feedProfessor.xhtml"> Feed Professor</a>
-                    </td> 
+                    <td class="firstLine"> <h:commandButton value="Cadastro" class="menuRegister"></h:commandButton> </td>
+                    <td> <h:commandButton value="Login" class="menuLogin"></h:commandButton> </td>
+                    <td> <a href="feedComunicados.xhtml"> Feed Professor</a> </td> 
                 </tr> 
             </table>
         </nav>
@@ -74,7 +68,7 @@
             <h:outputLabel value="Login:" for="login"> 
                 <h:inputText id="login" title="login" required="true" 
                              requiredMessage="O campo login deve ser preenchido" value="#{usuarioBean.email}"></h:inputText>
-                <h:message for="login" errorStyle="color:darkred;font-size:12pt;"></h:message>
+                             <h:message for="login" errorStyle="color:darkred;font-size:12pt;" ></h:message>
             </h:outputLabel>
             <br/>
             <h:outputLabel value="Senha:" for="senha"> 
@@ -87,7 +81,7 @@
             <br/>
             <p>
                 <h:commandButton id="buttonFormRegister" value="Cadastrar" class="buttonFormRegister"></h:commandButton>
-                <h:commandButton id="buttonLogin" value="Entrar" class="buttonLogin"></h:commandButton>
+                <h:commandButton id="buttonLogin" value="Entrar" class="buttonLogin" actionListener="#{usuarioBean.pegarUsuario()}"></h:commandButton>
             </p>
         </h:form> 
         <h:form id="formRegister">
