@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <head>
+        <title>Comunica - Perfil</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="css/perfilProfessor.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <nav>
+            <table id="sub_menu">
+                <tr>
+                    <td> <h:commandButton value="Comunica" class="menuHome"></h:commandButton> </td>
+                    <td> <h:commandButton value="Perfil" class="menuProfile"></h:commandButton> </td>
+                    <td> <h:commandButton value="Sair" class="menuExit"></h:commandButton> </td>
+                </tr>
+            </table>
+        </nav>
+        <div>
+            <div class="generalTeacher">
+                <div>
+                    <img src="imagem.jpg" alt="imagem do professor"/>    
+                    <div class="teacherData">
+                        <p id="nomeTeachero"> Marco Eugênio</p> 
+                        <p id="profissaoTeacher"> Professor</p>
+                    </div>
+                </div>
+                <div class="globalTags">
+                    <table class="tags"> 
+                        <caption>TAGS ATUAIS</caption>
+                        <tr> <td>Projeto Web</td> </tr>
+                        <tr> <td>Software Corporativo</td> </tr>
+                        <tr> <td>Engenharia de Software</td> </tr>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <p>Deseja incluir uma nova tag? Insira abaixo</p>
+                <textarea></textarea>
+                <br/>
+                <button class="buttonAddTag">Adicionar</button>
+            </div>
+
+        </div>
+    </body>
+</html>
