@@ -18,6 +18,7 @@ import javax.faces.bean.RequestScoped;
  *
  * @author Leandro
  */
+//Classe que faz a interceptação dos dados
 @ManagedBean(name = "usuarioBean")
 @RequestScoped
 public class UsuarioBean implements Serializable {
@@ -36,7 +37,7 @@ public class UsuarioBean implements Serializable {
     ProfessorServico professorServico;
     @EJB
     UsuarioServico usuarioServico;
-    
+    //Inicia o serviço de aluno e professor
     @PostConstruct
     public void iniciar() {
         
@@ -57,7 +58,7 @@ public class UsuarioBean implements Serializable {
             salvarProfessor();
         }
     }
-
+//Faz o envio de aluno
     public void salvarAluno() {
         
         this.aluno.setName(nome);
@@ -78,7 +79,8 @@ public class UsuarioBean implements Serializable {
         setSenha(null);
 
     }
-    
+    //Faz o envio de professor
+
     public void salvarProfessor(){
         
         this.professor.setName(nome);

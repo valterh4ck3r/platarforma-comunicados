@@ -9,6 +9,7 @@ package br.com.pdws.excecoes;
  *
  * @author lucas
  */
+//Exceção que avisa caso o email ja esteja sendo usado por algum usuario
 public class CadastroUsuarioException extends Exception {
 
        private String mensagem;
@@ -22,7 +23,7 @@ public class CadastroUsuarioException extends Exception {
     }
 
      public CadastroUsuarioException() {
-         
+         //Mensagem de retorno
          setMensagem("\"E-mail já usado por outro usuário.\n" + "Favor utilizar outro.\"");
          
 

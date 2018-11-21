@@ -21,6 +21,7 @@ import javax.persistence.TypedQuery;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+//Calsse abstrata que faz a comunicação entre as entidades com o BD
 @TransactionManagement(CONTAINER)
 @TransactionAttribute(REQUIRED)
 public abstract class Servico<T> {

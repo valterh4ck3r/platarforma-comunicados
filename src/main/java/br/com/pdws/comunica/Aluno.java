@@ -24,10 +24,15 @@ import javax.persistence.Table;
  *
  * @author bernardes
  */
+//Define que é a classe é uma entidade
 @Entity
+//Define o nome da tabela
 @Table(name="TB_USUARIO")
+//Valor que diferencia quem é aluno ou professor no usuario
 @DiscriminatorValue(value = "A")
+
 @PrimaryKeyJoinColumn(name="ID_ALUNO", referencedColumnName = "ID")
+//Query que ordena os alunos
 @NamedQueries(
     {
         @NamedQuery(
@@ -42,6 +47,7 @@ public class Aluno extends Usuario implements Serializable {
     
     public static final String TODOS_ALUNOS = "TodosAlunos";
 
+    //Mapeamento um para muitos (um aluno pode ter varos comentarios)
     @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL, targetEntity = Comentario.class,
             orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Comentario> comentarios;

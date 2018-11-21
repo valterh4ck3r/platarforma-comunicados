@@ -19,7 +19,7 @@ import java.io.IOException;
  * @author bernardes
  */
 public class Util {
-
+//Webservice para fazer o envio de email
   public static void enviarEmail(String from , String subject , String to , String content) throws IOException{
   
       Email fromEmail = new Email(from);

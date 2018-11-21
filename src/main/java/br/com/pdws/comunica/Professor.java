@@ -20,10 +20,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+//Determina que a classe é uma entidade
 @Entity
+//Define o nome da classe
 @Table(name="TB_USUARIO")
+//Define o valor que diferencia professor em usuario
 @DiscriminatorValue(value = "P")
 @PrimaryKeyJoinColumn(name="ID", referencedColumnName = "ID")
+//Query que ordena todos os professores
 @NamedQueries(
     {
         @NamedQuery(
@@ -37,7 +41,7 @@ import javax.persistence.Table;
 public class Professor extends Usuario implements Serializable {
     
     public static final String TODOS_PROFESSOR = "TodosProfessores";
-
+//um para muitos (um professor pode ter varios comunicados)
    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL, targetEntity = Comunicado.class,
             orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Comunicado> comunicados;

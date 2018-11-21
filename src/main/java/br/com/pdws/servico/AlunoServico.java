@@ -10,7 +10,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
-
+//Classe que serve como mediador entre a entidade e o bean
 @Stateless(name = "ejb/AlunoServico")
 public class AlunoServico extends Servico<Aluno> {
 

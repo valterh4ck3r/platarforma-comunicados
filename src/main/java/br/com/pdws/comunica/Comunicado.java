@@ -33,7 +33,9 @@ import javax.validation.constraints.Size;
  *
  * @author ALUNO
  */
+//Define que a classe é uma entidade
 @Entity
+//Define o nome da entidade na tabela
 @Table(name = "TB_COMUNICADO")
 public class Comunicado implements Serializable {
 
@@ -41,11 +43,14 @@ public class Comunicado implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
     
+    //Define que a coluna texto não pode ser branca e no maximo
+    //255 e minimo 2 caracters
     @NotBlank
     @Size(min = 2, max = 255)
     @Column(name = "TXT_TEXTO", nullable = false, length = 255)
     private String texto;
 
+    //Define uma coleção de elementos apontada para a coluna TAGS (array de tags)
     @ElementCollection
     @CollectionTable(name = "TB_TAGS",
             joinColumns = @JoinColumn(name = "ID"))
@@ -53,18 +58,20 @@ public class Comunicado implements Serializable {
     @Column(name = "TXT_TAGS")
     protected Collection<String> tags;
 
+    //Um para muitos (um comunicado pode ter varios comentarios)
     @OneToMany(mappedBy = "comunicado", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comentario> comentarios;
-
+//Muitos para um (um professor pode ter varios comunicados)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID")
     private Professor professor;
-
+//Coluna para datas que é temporal (presente - futuro)
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DT_CRIACAO")
     protected Date dataCriacao;    
     
+    //Precisa ser determinado antes de ser commitado
     @PrePersist
     protected void setDataCriacao() {
         this.setDataCriacao(new Date());
