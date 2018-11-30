@@ -19,13 +19,15 @@ and open the template in the editor.
         <nav>
             <table id="sub_menu">
                 <tr>
-                    <td> <h:commandButton value="Comunica" class="menuHome"></h:commandButton> </td>
-                    <td> <h:commandButton value="Perfil" class="menuProfile"></h:commandButton> </td>
+                    <td> <a href="index.xhtml" class="menuHome">Comunica</a> </td>
+                    <td> <a href="perfilProfessor.xhtml" class="menuProfile">Perfil</a> </td>
                     <td> <h:commandButton value="Sair" class="menuExit"></h:commandButton> </td>
                 </tr>
             </table>
         </nav>
         <div>
+            
+            <!-- Dados referentes ao professor cadastrado no sistema -->
             <div class="generalTeacher">
                 <div>
                     <img src="imagem.jpg" alt="imagem do professor"/>    
@@ -34,6 +36,9 @@ and open the template in the editor.
                         <p id="profissaoTeacher"> Professor</p>
                     </div>
                 </div>
+                
+                <!-- Tags referentes aos tipos de comunicados que o professor deseja ter acesso, as quais
+                o usuario informou anteriormente -->
                 <div class="globalTags">
                     <table class="tags"> 
                         <caption>TAGS ATUAIS</caption>
@@ -43,6 +48,8 @@ and open the template in the editor.
                     </table>
                 </div>
             </div>
+            
+            <!-- Caso o usuario deseje inserir uma nova tag -->
             <div>
                 <p>Deseja incluir uma nova tag? Insira abaixo</p>
                 <textarea></textarea>

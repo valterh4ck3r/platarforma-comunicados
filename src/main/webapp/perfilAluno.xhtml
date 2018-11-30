@@ -10,7 +10,7 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
     <head>
-        <title>TODO supply a title</title>
+        <title>Comunica - Perfil</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" type="text/css" href="css/perfilAluno.css"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -19,13 +19,14 @@ and open the template in the editor.
         <nav>
             <table id="sub_menu">
                 <tr>
-                    <td> <h:commandButton value="Página Inicial" class="menuHome"></h:commandButton> </td>
-                    <td> <h:commandButton value="Perfil Aluno" class="menuProfile"></h:commandButton> </td>
+                    <td> <a href="feedComunicados.xhtml" class="menuHome"> Comunica</a> </td>
+                    <td> <a href="perfilAluno.xhtml" class="menuProfile"> Perfil </a> </td>
                     <td> <h:commandButton value="Sair" class="menuExit"></h:commandButton> </td>
                 </tr>
             </table>
         </nav>
         <div>
+            <!-- Dados referentes ao aluno cadastrado no sistema -->
             <div class="generalStudent">
                 <div>
                     <img src="imagem.jpg" alt="imagem do aluno"/>    
@@ -34,6 +35,9 @@ and open the template in the editor.
                         <p id="profissaoAluno"> Estudante</p>
                     </div>
                 </div>
+                
+                <!-- Tags referentes aos tipos de comunicados que o aluno deseja ter acesso, as quais
+                o usuario informou anteriormente -->
                 <div class="globalTags">
                     <table class="tags"> 
                         <caption>TAGS ATUAIS</caption>
@@ -43,6 +47,8 @@ and open the template in the editor.
                     </table>
                 </div>
             </div>
+            
+            <!-- Caso o usuario deseje inserir uma nova tag -->
             <div>
                 <p>Deseja incluir uma nova tag? Insira abaixo</p>
                 <textarea></textarea>

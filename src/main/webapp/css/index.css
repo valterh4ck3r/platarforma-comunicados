@@ -130,6 +130,7 @@
 
 }
 
+/*Configuracao de layout para os formularios, para que estes sejam responsivos nos dispositivos mobile*/
 @media screen and (max-width: 480px)
 {
     #formRegister
@@ -164,6 +165,3 @@
         max-height: 170px;
     }
 }
-
-
-

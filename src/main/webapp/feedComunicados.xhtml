@@ -15,14 +15,14 @@
         <nav>
             <table id="sub_menu">
                 <tr>
-                    <td> <h:commandButton value="Página Inicial" class="menuHome"></h:commandButton> </td>
-                    <td> <h:commandButton value="Perfil Aluno" class="menuProfile"></h:commandButton> </td>
+                    <td> <h:commandButton value="Comunica" class="menuHome"></h:commandButton> </td>
+                    <td> <h:commandButton value="Perfil" class="menuProfile"></h:commandButton> </td>
                     <td> <h:commandButton value="Sair" class="menuExit"></h:commandButton> </td>
-                    <td> <a href="perfilAluno.xhtml">Perfil Aluno</a> </td>
                 </tr>
             </table>
         </nav>
         
+        <!-- Area resservada para o professor inserir seu comunicado -->
         <div id="communicationArea">
             <p>Insira seu comunicado abaixo</p>
                 <textarea>
@@ -32,6 +32,7 @@
             <h:commandButton value="Publicar" class="buttonPublish"></h:commandButton>
         </div>
         
+        <!-- Area reservada para o comunicado que sera puxado do banco de dados -->
         <div id="communicationTeacher">
             <p id="nameTeacher">Marco Eugênio</p>
             <p id="communicationPublished">

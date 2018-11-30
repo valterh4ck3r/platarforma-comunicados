@@ -1,12 +1,12 @@
 /*Responsivo nos seguintes dispositivos: google chrome, tablets (paisagem e retrato), smartphone*/
-@media screen and (max-width: 100em),(max-width: 1080px), (max-width: 1920px)
+@media screen and (max-width: 1080px), (max-width: 1920px)
 {
     body
     {
         background-color: blueviolet;
         margin: 0px;
     }
-    
+
     nav
     {
         margin: 0px;
@@ -15,7 +15,7 @@
         background: #AE57FF;
     }
 
-    #sub_menu, .menuHome, .menuProfile, .menuExit
+    #sub_menu, .menuProfile, .menuExit
     {
         font-size: 16pt;
         margin: 0px;
@@ -27,27 +27,17 @@
         border: none;
     }
 
-    .menuHome
-    {
-        padding-left: 10px;
-        font-weight: bold;
-        font-family: serif;
-        font-size: 22pt;
-        text-align: center;
-        margin-right: 32.5em;
-    }
-    
     .menuProfile
     {
         margin-right: 18px;
     }
-    
+
     a:link, a:visited, a:active
     {
         color: white;
         text-decoration: none;
     }
-    
+
     p
     {
         color: white;
@@ -58,36 +48,37 @@
         padding-left: 12px;
         border-radius: 3px;
     }
-    
+
     .studentData
     {
         float: left;
         height: 30px; 
     }
-    
+
     .generalStudent
     {
         margin-bottom: 2em;
         margin-top: 1em;
     }
-    
+
     img
     {
         width: 100px;
         height: 100px;
     }
+
     textarea
     {
-        height: 200px;
-        width: 500px;
+        height: 100px;
+        width: 350px;
         margin-left: 1em;
     }
-    
+
     .buttonAddTag
     {
         padding: 10px;
         background-color: white;
-        font-size: 14pt;
+        font-size: 12pt;
         font-family: serif;
         border-radius: 5px;
         font-weight: bold;
@@ -96,7 +87,7 @@
         margin-left: 0.8em;
         margin-bottom: 1em;
     }
-    
+
     .globalTags
     {
         margin-right: 1em;
@@ -112,11 +103,29 @@
         margin-right: 1em;
         margin-left: 1em;
     }
-    
+
     table tr td.tags
     {
-       padding: 8px;
-       border-radius: 5px;
+        padding: 8px;
+        border-radius: 5px;
     }
+
+
 }
 
+@media screen and (max-width: 100em)
+{
+    .menuHome
+    {
+        font-weight: bold;
+        font-family: serif;
+        font-size: 22pt;
+        text-align: center;
+        margin-right: 7em;
+    }
+    
+    .menuProfile
+    {
+        margin-right: 10px;
+    }
+}
