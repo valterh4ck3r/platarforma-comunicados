@@ -7,18 +7,17 @@
         margin: 0px;
     }
 
-    nav
+     .menuHome
     {
-        margin: 0px;
-        padding: 3px;
-        color: white;
-        background: #AE57FF;
-
+        padding-left: 10px;
+        font-weight: bold;
+        font-family: serif;
+        font-size: 14pt;
     }
-
-    #sub_menu, .menuHome, .menuProfile, .menuExit
+    
+    #sub_menu, .menuProfile, .menuExit
     {
-        font-size: 16pt;
+        font-size: 14pt;
         margin: 0px;
         padding: 3px;
         color: white;
@@ -28,20 +27,6 @@
         border: none;
     }
 
-    .menuHome
-    {
-        padding-left: 10px;
-        font-weight: bold;
-        font-family: serif;
-        font-size: 22pt;
-        text-align: center;
-        margin-right: 35.5em;
-    }
-    
-    .menuProfile
-    {
-        margin-right: 18px;
-    }
     a:link, a:visited, a:active
     {
         color: white;
@@ -54,8 +39,9 @@
         border-radius: 5px;
         margin: 1em;
         padding: 1em;
-        width: 32em;
+        width: 27em;
         height: 15em;
+        margin-top: 12em;
     }
     
     p
@@ -70,10 +56,11 @@
         padding-left: 10px;
         border-radius: 3px;
     }
+    
     textarea
     {
         height: 100px;
-        width: 500px;
+        width: 430px;
     }
     
     .buttonPublish
@@ -90,11 +77,11 @@
     
     #communicationTeacher
     {
-        border: 5px solid white;
+        border: 3px solid white;
         border-radius: 5px;
         margin: 1em;
         padding: 1em;
-        width: 32em;
+        width: 27em;
         height: 20em;
     }
     

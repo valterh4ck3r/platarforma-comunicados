@@ -7,27 +7,17 @@
         margin: 0px;
         text-align: center;
     }
-
-    nav
-    {
-        margin: 0px;
-        padding: 15px;
-        color: white;
-        background: #AE57FF;
-    }
     
-    #homecomunica
+    .homecomunica
     {
         font-weight: bold;
         font-family: serif;
-        font-size: 20pt;
-        text-align: center;
-        margin-right:38em;
+        font-size: 14pt;
     }
 
     #sub_menu, .menuRegister, .menuLogin
     {
-        font-size: 16pt;
+        font-size: 14pt;
         margin: 0px;
         padding: 3px;
         color: white;
@@ -46,13 +36,13 @@
     a:link, a:visited, a:active
     {
         color: white;
-        text-decoration: none;
+        text-decoration: none; 
     }
     
     #formLogin
     {
         display: inline-block;
-        padding: 1.5em 5% 3em 5%;
+        padding: 2.5em 5% 3em 5%;
         margin:4.9%;
         color: white;
         font-weight: bold;
@@ -62,7 +52,8 @@
         border-radius: 5px;
         background-color: #C72BE2;
         width: 250px;
-        height: 170px;
+        height: 200px;
+        margin-top: 5em;
     }
 
     #esqueceuSenha:link, #esqueceuSenha:visited
@@ -71,6 +62,7 @@
         font-family: sans-serif;
         float: right;
         margin-top: 8px;
+        background: none;
     }
     legend
     {
@@ -84,7 +76,7 @@
     {
         padding: 10px;
         background-color: white;
-        font-size: 14pt;
+        font-size: 12pt;
         font-family: sans-serif;
         border-radius: 5px;
         font-weight: bold;
@@ -96,7 +88,7 @@
     {
         padding: 10px;
         background-color: white;
-        font-size: 14pt;
+        font-size: 12pt;
         font-family: sans-serif;
         border-radius: 5px;
         font-weight: bold;
@@ -106,7 +98,7 @@
     {
         display: inline-block;
         padding: 1.5em 5% 3.5em 5%;
-        margin:1.15em;
+        margin-top: 5em;
         color: white;
         font-weight: bold;
         font-family: serif;
@@ -116,6 +108,7 @@
         background-color: #C72BE2;
         max-width: 275px;
         max-height: 310px;
+        margin-bottom: 2em;
     }
 
     .buttonRegister
@@ -137,7 +130,6 @@
     {
         display: inline-block;
         padding: 1.5em 5% 3.5em 5%;
-        margin:1.15em;
         color: white;
         font-weight: bold;
         font-family: serif;
@@ -153,7 +145,6 @@
     {
         display: inline-block;
         padding: 1.5em 5% 3em 5%;
-        margin:8%;
         color: white;
         font-weight: bold;
         font-family: serif;
