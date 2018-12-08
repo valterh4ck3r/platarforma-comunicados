@@ -1,5 +1,5 @@
 /*Responsivo nos seguintes dispositivos: google chrome, tablets (paisagem e retrato), smartphone*/
-@media screen and (max-width: 100em),(max-width: 1080px), (max-width: 1920px)
+@media screen and (max-width: 100em),(max-width: 1920px ), (max-width: 1080px)
 {
     body
     {
@@ -46,9 +46,10 @@
     
     p
     {
-        color:#4B0082;
-        background-color: white;
+        
+        
         font-size: 18pt;
+        background-color: white;
         font-family: serif;
         font-weight: bold;
         width: 310px;
@@ -61,6 +62,7 @@
     {
         height: 100px;
         width: 430px;
+        background-color: white;
     }
     
     .buttonPublish

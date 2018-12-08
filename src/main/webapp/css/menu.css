@@ -42,7 +42,7 @@ header nav
 }
 
 .nav-collapse.opened {
-    max-height: 9999px;
+    max-height: 1920px;
 }
 
 .disable-pointer-events {
