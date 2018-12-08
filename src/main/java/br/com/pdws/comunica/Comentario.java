@@ -23,23 +23,30 @@ import org.hibernate.validator.constraints.NotBlank;
  *
  * @author ALUNO
  */
+//Define que é a classe é uma entidade
 @Entity
+//Define o nome da tabela
 @Table(name = "TB_COMENTARIO")
 public class Comentario implements Serializable {
+//Define as colunas que a tabela ira conter
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
-    
+
+    //Define que a coluna texto não pode estar em branco
+    //antes de commit, tendo no minimo dois e maximo 50 caracters
     @NotBlank
     @Size(min = 2, max = 50)
     @Column(name = "TXT_TEXTO", nullable = false, length = 50)
     private String texto;
 
+    //Varios para um (um aluno pode ter varios comentarios)
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, optional = false)
     @JoinColumn(name = "ID_ALUNO", referencedColumnName = "ID", nullable = false)
     private Aluno aluno;
 
+    //Varios para um (um comunica pode ter varios comentarios)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ID_COMUNICADO", referencedColumnName = "ID")
     private Comunicado comunicado;
@@ -51,12 +58,11 @@ public class Comentario implements Serializable {
     public void setID(Long ID) {
         this.ID = ID;
     }
-
-    
+//Define a coluna texto que ira armazenar o texto
     public String getTexto() {
         return texto;
     }
-
+//Define a coluna comunicado que ira armazenar o comunicado
     public Comunicado getComunicado() {
         return comunicado;
     }

@@ -5,6 +5,7 @@
  */
 package br.com.pdws.servico;
 
+import br.com.pdws.excecoes.CadastroUsuarioException;
 import java.util.List;
 import javax.ejb.TransactionAttribute;
 import static javax.ejb.TransactionAttributeType.NOT_SUPPORTED;
@@ -20,6 +21,7 @@ import javax.persistence.TypedQuery;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+//Calsse abstrata que faz a comunicação entre as entidades com o BD
 @TransactionManagement(CONTAINER)
 @TransactionAttribute(REQUIRED)
 public abstract class Servico<T> {
@@ -41,7 +43,7 @@ public abstract class Servico<T> {
         return true;
     }
 
-    public void persistence(@Valid T entidade) {
+    public void persistence(@Valid T entidade) throws CadastroUsuarioException{
         entityManager.persist(entidade);
     }
 

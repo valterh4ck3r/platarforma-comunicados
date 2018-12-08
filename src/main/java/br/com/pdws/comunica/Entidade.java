@@ -17,6 +17,7 @@ import javax.persistence.Version;
  *
  * @author Bernardes
  */
+//Classe abstrata que cria os campos nas outra entidades
 @MappedSuperclass
 public abstract class Entidade implements Serializable {
     @Id

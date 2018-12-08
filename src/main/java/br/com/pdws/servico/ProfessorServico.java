@@ -5,7 +5,6 @@
  */
 package br.com.pdws.servico;
 
-import br.com.pdws.comunica.Aluno;
 import br.com.pdws.comunica.Professor;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -13,10 +12,8 @@ import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
-/**
- *
- * @author isabella
- */
+
+//Classe que serve como mediador entre a entidade e o bean
 @Stateless(name = "ejb/ProfessorServico")
 public class ProfessorServico extends Servico<Professor> {
     

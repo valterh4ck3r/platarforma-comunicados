@@ -3,9 +3,11 @@ package br.com.pdws.beans;
 import br.com.pdws.comunica.Aluno;
 import br.com.pdws.comunica.Professor;
 import br.com.pdws.comunica.Usuario;
+import br.com.pdws.excecoes.CadastroUsuarioException;
 import br.com.pdws.servico.AlunoServico;
 import br.com.pdws.servico.ProfessorServico;
 import br.com.pdws.servico.UsuarioServico;
+import br.com.pdws.util.ObjetosSessaoManager;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -16,6 +18,7 @@ import javax.faces.bean.RequestScoped;
  *
  * @author Leandro
  */
+//Classe que faz a interceptação dos dados
 @ManagedBean(name = "usuarioBean")
 @RequestScoped
 public class UsuarioBean implements Serializable {
@@ -27,13 +30,14 @@ public class UsuarioBean implements Serializable {
     private Professor professor;
     private String tipo;
     
+    
     @EJB
     AlunoServico alunoServico;
     @EJB
     ProfessorServico professorServico;
     @EJB
     UsuarioServico usuarioServico;
-    
+    //Inicia o serviço de aluno e professor
     @PostConstruct
     public void iniciar() {
         
@@ -54,27 +58,44 @@ public class UsuarioBean implements Serializable {
             salvarProfessor();
         }
     }
-
+//Faz o envio de aluno
     public void salvarAluno() {
         
         this.aluno.setName(nome);
         this.aluno.setEmail(email);
         this.aluno.setSenha(senha);
 
-        this.alunoServico.persistence(this.aluno);
+        try {
+            
+            this.alunoServico.persistence(this.aluno);
+            
+        } catch (CadastroUsuarioException ex) {
+            
+            //Precisa tratar aqui!
+        }
+        
         setNome(null);
         setEmail(null);
         setSenha(null);
 
     }
-    
+    //Faz o envio de professor
+
     public void salvarProfessor(){
         
         this.professor.setName(nome);
         this.professor.setEmail(email);
         this.professor.setSenha(senha);
 
-        this.professorServico.persistence(this.professor);
+        try {
+            
+            this.professorServico.persistence(this.professor);
+            
+        } catch (CadastroUsuarioException ex) {
+            
+            //Precisa tratar aqui!
+        }
+        
         setNome(null);
         setEmail(null);
         setSenha(null);
@@ -82,13 +103,15 @@ public class UsuarioBean implements Serializable {
     
     //Esse método pega os dados do usuário, se houver
     //PRECISA DE UM MÉTODO QUE REDIRECIONA PARA A PÁGINA APÓS O LOGIN OU TRATA O ERRO QUANDO NAO HOUVER USER CADASTRADO
-    public Usuario pegarUsuario(){
+    public void pegarUsuario(){
+        
         Usuario usuario = usuarioServico.getUserPorEmail(email);
         
             if(usuario != null && usuario.getSenha().equals(senha))
-                return usuario;
+                
+                ObjetosSessaoManager.guardarObjetoSessao("usuario", usuario);
             
-            return usuario;
+                enviarParaFeed();
     }
 
     public void setAluno(Aluno aluno) {
@@ -153,6 +176,11 @@ public class UsuarioBean implements Serializable {
 
     public ProfessorServico getProfessorServico() {
         return professorServico;
+    }
+
+    private String enviarParaFeed() {
+        
+           return "Feed?faces-redirect";
     }
    
 }

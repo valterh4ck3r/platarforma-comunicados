@@ -18,6 +18,8 @@ import javax.validation.constraints.NotNull;
  *
  * @author leandro
  */
+//Classe que serve como mediador entre a entidade e o bean
+
 @Stateless(name = "ejb/UsuarioServico")
 public class UsuarioServico extends Servico<Usuario> {
 
@@ -25,7 +27,7 @@ public class UsuarioServico extends Servico<Usuario> {
     public void init() {
         super.setClasse(Usuario.class);
     }
-
+//Query de comparação entre usuarios caso exista
     @Override
     public boolean exist(@NotNull Usuario usuario) {
         TypedQuery<Usuario> query;
@@ -33,20 +35,25 @@ public class UsuarioServico extends Servico<Usuario> {
         query.setParameter(1, usuario.getID());
         return !query.getResultList().isEmpty();
     }
-    
+    //Query que busca usuarios por email
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public Usuario getUserPorEmail(String email){
         return super.findEntity(new Object[]{email}, Usuario.USUARIO_POR_EMAIL);
     }
-    
+        //Query que busca usuarios por letra
+
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public List<Usuario> getUserPorLetra(String letra){
         return super.findEntities(new Object[]{letra}, Usuario.USUARIO_POR_LETRA);
     }
+        //Query que busca usuarios por nome
+
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public List<Usuario> getUserPorNome(String nome){
         return super.findEntities(new Object[]{nome}, Usuario.USUARIO_POR_NOME);
     }
+        //Query que busca usuarios ao todo
+
     @TransactionAttribute(TransactionAttributeType.SUPPORTS)
     public List<Usuario> getAllUsers(){
         return super.findEntities(Usuario.TODOS_USUARIOS);
