@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <head>
+        <title>Comunica - Feed de Notícias</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="css/feedComunicados.css"/>
+        <link rel="stylesheet" type="text/css" href="css/menu.css"/>
+        <script src="js/fastclick.js"></script>
+        <script src="js/scroll.js"></script>
+        <script src="js/fixed-responsive-nav.js"></script>
+        <script src="js/responsive-nav.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    </head>
+    <body>
+
+        <header>
+            <nav class="nav-collapse">
+                <ul>
+                    <li><a href="feedComunicados.xhtml" class="menuHome"> Comunica</a></li>
+                    <li class="menu-item"><a href="perfilProfessor.xhtml" class="menuProfile"> Perfil </a></li>
+                    <li class="menu-item"><a href="#" class="menuExit">Sair</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- Area resservada para o professor inserir seu comunicado -->
+        <div id="communicationArea">
+            <p>Insira seu comunicado abaixo</p>
+            <textarea>
+
+            </textarea>
+            <br/>
+            <h:commandButton value="Publicar" class="buttonPublish"></h:commandButton>
+        </div>
+
+        <!-- Area reservada para o comunicado que sera puxado do banco de dados -->
+        <div id="communicationTeacher">
+            <p id="nameTeacher">Marco Eugênio</p>
+            <p id="communicationPublished">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dignissim velit vel condimentum tristique.
+                Praesent tellus eros, tempus nec posuere sed, feugiat consequat leo. Nulla hendrerit lorem feugiat nisl
+                vulputate elementum. Aenean eget libero accumsan, dictum massa id, tincidunt ligula. Nulla facilisi. 
+                Cras imperdiet laoreet pretium. Praesent fringilla vel tortor sit amet varius. Ut id sapien neque. 
+                Nulla gravida sollicitudin est vel dictum. Nulla facilisi.
+            </p>
+            <table>
+                <tr>
+                    <td class="tags">engenharia de software</td>
+                    <td class="tags">prova</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

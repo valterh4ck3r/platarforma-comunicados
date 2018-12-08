@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"  
+<<<<<<< HEAD
       xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
         <title>Comunica - Página Inicial</title>
@@ -30,6 +31,139 @@
                 <h:commandButton id="buttonLogin" value="Entrar" class="buttonLogin"></h:commandButton>
             </p>
         </h:form> 
+=======
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <h:head>
+        <title>Comunica - Página Inicial</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="css/index.css"/>
+        <link rel="stylesheet" type="text/css" href="css/menu.css"/>
+        <script src="js/fastclick.js"></script>
+        <script src="js/scroll.js"></script>
+        <script src="js/fixed-responsive-nav.js"></script>
+        <script src="js/responsive-nav.js"></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    </h:head>
+    <h:body>
+        <script>
+            //funcao para modificar a exibicao dos formularios de cadastro e login
+            //enquanto um formulario estiver visivel o outro estara sem visibilidade
+            //o trigger para a modificacao da visibilidade dos formularios sao os butoes de Cadastro e Login
+            jQuery(window).load(function ()
+            {
+                jQuery("#formRegister").hide();
+                $(".buttonFormRegister").click(function (e)
+                {
+                    e.preventDefault();
+                    formRegister = $(this).add("#formRegister");
+                    formLogin = $(this).add("#formLogin");
+                    $(formRegister).show();
+                    $(formLogin).hide();
+                });
+
+                jQuery("#formRegister").hide();
+                $(".menuRegister").click(function (e)
+                {
+                    e.preventDefault();
+                    formRegister = $(this).add("#formRegister");
+                    formLogin = $(this).add("#formLogin");
+                    buttonMenu = $(this).add(".menuRegister");
+                    $(formRegister).show();
+                    $(formLogin).hide();
+                    $(buttonMenu).show();
+                });
+
+                jQuery("#formRegister").hide();
+                $(".menuLogin").click(function (e)
+                {
+                    e.preventDefault();
+                    formRegister = $(this).add("#formRegister");
+                    formLogin = $(this).add("#formLogin");
+                    buttonMenu = $(this).add(".menuLogin");
+                    $(formLogin).show();
+                    $(formRegister).hide();
+                    $(buttonMenu).show();
+                });
+            });
+        </script>
+
+        <header>
+            <nav class="nav-collapse">
+                <ul>
+                    <li><a href="index.xhtml" class="homecomunica">Comunica</a></li>
+                    <li class="menu-item"><a href="#formCadastro" class="menuRegister">Cadastro</a></li>
+                    <li class="menu-item"><a href="#formLogin" class="menuLogin">Login</a></li>
+                </ul>
+            </nav>
+        </header>
+       
+        <!-- Formulario de login de usuario -->
+        <h:form id="formLogin">
+            <legend>Entrar no Comunica</legend>
+            <h:outputLabel value="Login:" for="login"> 
+                <h:inputText id="login" title="login" required="true" 
+                             requiredMessage="O campo login deve ser preenchido" value="#{usuarioBean.email}"></h:inputText>
+                <h:message for="login" errorStyle="color:darkred;font-size:12pt;" ></h:message>
+            </h:outputLabel>
+            <br/>
+            <h:outputLabel value="Senha:" for="senha"> 
+                <h:inputSecret id="senha" title="senha" required="true" 
+                               requiredMessage="O campo senha deve ser preenchido" value="#{usuarioBean.senha}"></h:inputSecret>
+                <h:message for="senha" errorStyle="color:darkred;font-size:12pt;"></h:message>
+            </h:outputLabel>
+            <br/>
+            <a href="" id="esqueceuSenha"> Esqueceu a senha? </a>      
+            <br/>
+            <p>
+                <h:commandButton id="buttonFormRegister" value="Cadastrar" class="buttonFormRegister"></h:commandButton>
+                <h:commandButton id="buttonLogin" value="Entrar" class="buttonLogin" actionListener="#{usuarioBean.pegarUsuario()}"></h:commandButton>
+            </p>
+        </h:form> 
+
+        <!-- Formulario de cadastro de usuario -->
+
+        <h:form id="formRegister">
+            <legend>Cadastrar no Comunica</legend>
+            <h:outputLabel value="Nome:" for="nameRegister"> 
+                <h:inputText id="nameRegister" title="name" required="true" pt:placeholder="Seu nome"
+                             requiredMessage="O campo nome deve ser preenchido" value="#{usuarioBean.nome}"></h:inputText>
+
+            </h:outputLabel>
+            <br/>
+            <h:message for="nameRegister" errorStyle="color:darkred;font-size:12pt;"></h:message>
+            <br/>
+            <h:outputLabel value="E-mail:" for="emailRegister"> 
+                <h:inputText id="emailRegister" title="email" required="true" pt:placeholder="maria@gmail.com"
+                             requiredMessage="O campo e-mail deve ser preenchido" value="#{usuarioBean.email}"></h:inputText>
+
+            </h:outputLabel>
+            <br/>
+            <h:message for="emailRegister" errorStyle="color:darkred;font-size:12pt;"></h:message>
+            <br/>
+            <h:outputLabel value="Senha:" for="senhaRegister"> 
+                <h:inputSecret id="senhaRegister" title="senha" required="true" pt:placeholder="Sua senha" 
+                               requiredMessage="O campo senha deve ser preenchido" value="#{usuarioBean.senha}"></h:inputSecret>
+            </h:outputLabel>
+            <br/>
+            <h:message for="senhaRegister" errorStyle="color:darkred;font-size:12pt;"></h:message>
+            <br/>
+            <h:outputLabel value="Tipo de vínculo:" for="vinculoRegister"> 
+                <h:selectOneRadio id="vinculoRegister" required="true"  
+                                  requiredMessage="O campo vinculo deve ser preenchido"  value="#{usuarioBean.tipo}">
+                    <f:selectItem itemValue="Estudante" itemLabel="Estudante" />
+                    <f:selectItem itemValue="Professor" itemLabel="Professor" />
+                </h:selectOneRadio>
+                <h:message for="senhaRegister" errorStyle="color:darkred;font-size:12pt;"></h:message>
+            </h:outputLabel>
+
+            <p>
+                <h:commandButton id="buttonRegister" value="Cadastrar" class="buttonRegister" action="#{usuarioBean.checaTipoUsuario()}"></h:commandButton>
+            </p>
+        </h:form>
+>>>>>>> front
     </h:body>
 </html>
 
