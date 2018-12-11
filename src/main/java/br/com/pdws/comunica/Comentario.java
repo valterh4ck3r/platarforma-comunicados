@@ -15,6 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotBlank;
@@ -27,7 +29,20 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 //Define o nome da tabela
 @Table(name = "TB_COMENTARIO")
+//Query que ordena os comunicados
+@NamedQueries(
+        {
+            @NamedQuery(
+                    name = Comentario.TODOS_COMENTARIOS,
+                    query = "SELECT a FROM Comentario a"
+            )
+
+        }
+)
 public class Comentario implements Serializable {
+    
+        public static final String TODOS_COMENTARIOS = "TodosComentarios";
+
 //Define as colunas que a tabela ira conter
 
     @Id

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <head>
+        <title>Comunica - Perfil</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="css/perfilProfessor.css"/>
+        <link rel="stylesheet" type="text/css" href="css/menu.css"/>
+        <script src="js/fastclick.js"></script>
+        <script src="js/scroll.js"></script>
+        <script src="js/fixed-responsive-nav.js"></script>
+        <script src="js/responsive-nav.js"></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    </head>
+    <body>
+        
+        <header>
+            <nav class="nav-collapse">
+                <ul>
+                    <li><a href="feedComunicados.xhtml" class="menuHome"> Comunica</a></li>
+                    <li class="menu-item"><a href="perfilProfessor.xhtml" class="menuProfile"> Perfil </a></li>
+                    <li class="menu-item"><a href="#" class="menuExit">Sair</a></li>
+                </ul>
+            </nav>
+        </header>
+      
+        <div>
+            
+            <!-- Dados referentes ao professor cadastrado no sistema -->
+            <div class="generalTeacher">
+                <div>
+                    <img src="imagem.jpg" alt="imagem do professor"/>    
+                    <div class="teacherData">
+                        <p id="nomeTeachero"> Marco Eugênio</p> 
+                        <p id="profissaoTeacher"> Professor</p>
+                    </div>
+                </div>
+                
+                <!-- Tags referentes aos tipos de comunicados que o professor deseja ter acesso, as quais
+                o usuario informou anteriormente -->
+                <div class="globalTags">
+                    <table class="tags"> 
+                        <caption>TAGS ATUAIS</caption>
+                        <tr> <td>Projeto Web</td> </tr>
+                        <tr> <td>Software Corporativo</td> </tr>
+                        <tr> <td>Engenharia de Software</td> </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Caso o usuario deseje inserir uma nova tag -->
+            <div>
+                <p>Deseja incluir uma nova tag? Insira abaixo</p>
+                <textarea></textarea>
+                <br/>
+                <button class="buttonAddTag">Adicionar</button>
+            </div>
+
+        </div>
+    </body>
+</html>

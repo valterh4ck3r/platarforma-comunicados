@@ -21,6 +21,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
@@ -37,12 +39,24 @@ import javax.validation.constraints.Size;
 @Entity
 //Define o nome da entidade na tabela
 @Table(name = "TB_COMUNICADO")
+//Query que ordena os comunicados
+@NamedQueries(
+        {
+            @NamedQuery(
+                    name = Comunicado.TODOS_COMUNICADOS,
+                    query = "SELECT a FROM Comunicado a"
+            )
+
+        }
+)
 public class Comunicado implements Serializable {
+
+    public static final String TODOS_COMUNICADOS = "TodosComunicados";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
-    
+
     //Define que a coluna texto não pode ser branca e no maximo
     //255 e minimo 2 caracters
     @NotBlank
@@ -54,7 +68,7 @@ public class Comunicado implements Serializable {
     @ElementCollection
     @CollectionTable(name = "TB_TAGS",
             joinColumns = @JoinColumn(name = "ID"))
-    
+
     @Column(name = "TXT_TAGS")
     protected Collection<String> tags;
 
@@ -69,22 +83,22 @@ public class Comunicado implements Serializable {
 //Coluna para datas que é temporal (presente - futuro)
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "DT_CRIACAO")
-    protected Date dataCriacao;    
-    
+    protected Date dataCriacao;
+
     //Precisa ser determinado antes de ser commitado
     @PrePersist
     protected void setDataCriacao() {
         this.setDataCriacao(new Date());
     }
-    
-     public Date getDataCriacao() {
+
+    public Date getDataCriacao() {
         return dataCriacao;
     }
 
     public void setDataCriacao(Date dataCriacao) {
         this.dataCriacao = dataCriacao;
     }
-    
+
     public Long getID() {
         return ID;
     }
@@ -93,8 +107,6 @@ public class Comunicado implements Serializable {
         this.ID = ID;
     }
 
-    
-    
     public Professor getProfessor() {
         return professor;
     }

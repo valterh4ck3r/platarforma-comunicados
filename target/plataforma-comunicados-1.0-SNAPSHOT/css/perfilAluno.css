@@ -1,0 +1,108 @@
+/*Responsivo nos seguintes dispositivos: google chrome, tablets (paisagem e retrato), smartphone*/
+@media screen and (max-width:100em), (max-width: 1080px), (max-width: 1920px)
+{
+    body
+    {
+        background-color: blueviolet;
+        margin: 0px;
+    }
+
+    .menuHome
+    {
+        font-weight: bold;
+        font-family: serif;
+        font-size: 14pt;
+    }
+    
+    #sub_menu, .menuProfile, .menuExit
+    {
+        font-size: 14pt;
+        margin: 0px;
+        padding: 3px;
+        color: white;
+        background: #AE57FF;
+        font-weight: bold;
+        font-family: serif;
+        border: none;
+    }
+
+    a:link, a:visited, a:active
+    {
+        color: white;
+        text-decoration: none;
+    }
+
+    p
+    {
+        color: white;
+        font-size: 14pt;
+        font-family: serif;
+        font-weight: bold;
+        padding-right:10px;
+        padding-left: 12px;
+        border-radius: 3px;
+    }
+
+    .studentData
+    {
+        float: left;
+        height: 30px; 
+        margin-top: 7em;
+    }
+
+    .generalStudent
+    {
+        margin-bottom: 2em;
+        margin-top: 1em;
+    }
+
+    img
+    {
+        width: 100px;
+        height: 100px;
+        margin-top: 7em;
+    }
+
+    textarea
+    {
+        height: 100px;
+        width: 350px;
+        margin-left: 1em;
+    }
+
+    .buttonAddTag
+    {
+        padding: 10px;
+        background-color: white;
+        font-size: 12pt;
+        font-family: serif;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-top: 5px;
+        float: left;
+        margin-left: 0.8em;
+        margin-bottom: 1em;
+    }
+
+    .globalTags
+    {
+        margin-right: 1em;
+    }
+    .tags
+    {
+        color: white;
+        background: #AE57FF;
+        font-size: 13pt;
+        font-weight: bold;
+        width: 200px;
+        margin-top: 1.5em;
+        margin-right: 1em;
+        margin-left: 1em;
+    }
+
+    table tr td.tags
+    {
+        padding: 8px;
+        border-radius: 5px;
+    }
+}
