@@ -13,6 +13,7 @@ import br.com.pdws.servico.UsuarioServico;
 import br.com.pdws.util.ObjetosSessaoManager;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -27,8 +28,11 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class ComunicadoBean implements Serializable {
 
+    private List<Comunicado> comunicados;
     private Aluno aluno;
+    private long id;
     private Professor professor;
+    private String tag;
     private String texto;
     private String email;
     private String senha;
@@ -58,7 +62,8 @@ public class ComunicadoBean implements Serializable {
 
 //Faz o envio do counicado
     public void salvarComunicado() {
-
+        this.comunicado.addTags(tag);
+        this.comunicado.setID(ObjetosSessaoManager.pegarObjetoSessao(id));
         this.comunicado.setTexto(texto);
         this.comunicado.setProfessor(professor);
         this.comunicado.setDataCriacao(dataCriacao);
@@ -66,7 +71,11 @@ public class ComunicadoBean implements Serializable {
         setTexto(null);
         setProfessor(null);
         setDataCriacao(null);
+    }
 
+    public List<Comunicado> getComunicados() {
+        comunicados = comunicadoServico.getAllComunicados();
+        return comunicados;
     }
 
     //Esse método pega os dados do usuário, se houver
@@ -144,6 +153,38 @@ public class ComunicadoBean implements Serializable {
 
     public void setDataCriacao(Date dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     private String enviarParaFeed() {
