@@ -1,24 +1,18 @@
-package br.com.pdws.beans;
-
 import br.com.pdws.comunica.Aluno;
 import br.com.pdws.comunica.Comentario;
 import br.com.pdws.comunica.Comunicado;
 import br.com.pdws.comunica.Professor;
-import br.com.pdws.comunica.Tag;
-import br.com.pdws.comunica.Usuario;
 import br.com.pdws.excecoes.CadastroUsuarioException;
+import br.com.pdws.excecoes.ComunicadosException;
 import br.com.pdws.servico.AlunoServico;
 import br.com.pdws.servico.ComentarioServico;
 import br.com.pdws.servico.ComunicadoServico;
 import br.com.pdws.servico.ProfessorServico;
-import br.com.pdws.servico.TagServico;
 import br.com.pdws.servico.UsuarioServico;
 import br.com.pdws.util.ObjetosSessaoManager;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -44,33 +38,17 @@ public class ComunicadoBean implements Serializable {
     private Comunicado comunicado;
     private Comentario comentario;
     private Date dataCriacao;
-    private Tag tag1;
-
-    public Tag getTag1() {
-        return tag1;
-    }
-
-    public void setTag1(Tag tag1) {
-        this.tag1 = tag1;
-    }
 
     @EJB
     AlunoServico alunoServico;
-    
     @EJB
     ProfessorServico professorServico;
-    
     @EJB
     UsuarioServico usuarioServico;
-    
     @EJB
     ComunicadoServico comunicadoServico;
-    
     @EJB
     ComentarioServico comentarioServico;
-    
-    @EJB
-    TagServico tagServico;
 
     //Inicia o serviço
     @PostConstruct
@@ -82,29 +60,22 @@ public class ComunicadoBean implements Serializable {
     }
 
 //Faz o envio do counicado
-    public void salvarComunicado() {
-//        this.comunicado.addTags(tag);
-        this.comunicado.setID( (Long) ObjetosSessaoManager.pegarObjetoSessao(Long.toString(id)));
+    public void salvarComunicado() throws ComunicadosException {
+        
+        professor = (Professor) ObjetosSessaoManager.pegarObjetoSessao("professor");
+        
+        //this.comunicado.addTags(tag);
         this.comunicado.setTexto(texto);
         this.comunicado.setProfessor(professor);
         this.comunicado.setDataCriacao(dataCriacao);
-        this.comunicado.
-
-        setTexto(null);
-        setProfessor(null);
-        setDataCriacao(null);
-    }
-    
-    public void inserirTag(){
+        
         try {
-            tagServico.persistence(tag1);
+            comunicadoServico.persistence(comunicado);
         } catch (CadastroUsuarioException ex) {
-            Logger.getLogger(ComunicadoBean.class.getName()).log(Level.SEVERE, null, ex);
+            //Precisa tratar aqui
         }
-    }
-    
-    public void addTagComunicado(){
-        this.comunicado.addTags(tag);
+
+       this.comunicado = null;
     }
 
     public List<Comunicado> getComunicados() {
@@ -112,50 +83,7 @@ public class ComunicadoBean implements Serializable {
         return comunicados;
     }
 
-    //Esse método pega os dados do usuário, se houver
-    //PRECISA DE UM MÉTODO QUE REDIRECIONA PARA A PÁGINA APÓS O LOGIN OU TRATA O ERRO QUANDO NAO HOUVER USER CADASTRADO
-    public void pegarUsuario() {
-
-        Usuario usuario = usuarioServico.getUserPorEmail(email);
-
-        if (usuario != null && usuario.getSenha().equals(senha)) {
-            ObjetosSessaoManager.guardarObjetoSessao("usuario", usuario);
-        }
-
-        enviarParaFeed();
-    }
-
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
-    }
-
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
-    }
-
-    public void setAlunoServico(AlunoServico alunoServico) {
-        this.alunoServico = alunoServico;
-    }
-
-    public void setProfessorServico(ProfessorServico professorServico) {
-        this.professorServico = professorServico;
-    }
-
-    public Aluno getAluno() {
-        return aluno;
-    }
-
-    public Professor getProfessor() {
-        return professor;
-    }
-
-    public AlunoServico getAlunoServico() {
-        return alunoServico;
-    }
-
-    public ProfessorServico getProfessorServico() {
-        return professorServico;
-    }
+  
 
     public String getTexto() {
         return texto;
@@ -188,42 +116,9 @@ public class ComunicadoBean implements Serializable {
     public void setDataCriacao(Date dataCriacao) {
         this.dataCriacao = dataCriacao;
     }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
+    
     private String enviarParaFeed() {
 
         return "Feed?faces-redirect";
     }
-
 }

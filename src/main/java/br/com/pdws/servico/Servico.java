@@ -6,6 +6,7 @@
 package br.com.pdws.servico;
 
 import br.com.pdws.excecoes.CadastroUsuarioException;
+import br.com.pdws.excecoes.ComunicadosException;
 import java.util.List;
 import javax.ejb.TransactionAttribute;
 import static javax.ejb.TransactionAttributeType.NOT_SUPPORTED;
@@ -43,7 +44,7 @@ public abstract class Servico<T> {
         return true;
     }
 
-    public void persistence(@Valid T entidade) throws CadastroUsuarioException{
+    public void persistence(@Valid T entidade) throws CadastroUsuarioException, ComunicadosException{
         entityManager.persist(entidade);
     }
 

@@ -65,9 +65,9 @@ public class Comunicado implements Serializable {
     private String texto;
 
     //Define uma coleção de elementos apontada para a coluna TAGS (array de tags)
-    @OneToMany
+ /*   @OneToMany
     @JoinColumn(name = "ID_TAG", referencedColumnName = "ID")
-    private Collection<String> tags;
+    private Collection<String> tags;*/
 
     //Um para muitos (um comunicado pode ter varios comentarios)
     @OneToMany(mappedBy = "comunicado", fetch = FetchType.LAZY,
@@ -128,15 +128,15 @@ public class Comunicado implements Serializable {
         this.comentarios = comentarios;
     }
 
-    public Collection<String> getTags() {
-        return tags;
-    }
-
-    public void addTags(String tag) {
-        if (tags == null) {
-            tags = new HashSet<>();
-        }
-        tags.add(tag);
-    }
+//    public Collection<String> getTags() {
+//        return tags;
+//    }
+//
+//    public void addTags(String tag) {
+//        if (tags == null) {
+//            tags = new HashSet<>();
+//        }
+//        tags.add(tag);
+//    }
 
 }

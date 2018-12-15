@@ -4,15 +4,20 @@ import br.com.pdws.comunica.Aluno;
 import br.com.pdws.comunica.Professor;
 import br.com.pdws.comunica.Usuario;
 import br.com.pdws.excecoes.CadastroUsuarioException;
+import br.com.pdws.excecoes.ComunicadosException;
 import br.com.pdws.servico.AlunoServico;
 import br.com.pdws.servico.ProfessorServico;
 import br.com.pdws.servico.UsuarioServico;
 import br.com.pdws.util.ObjetosSessaoManager;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -73,6 +78,8 @@ public class UsuarioBean implements Serializable {
         } catch (CadastroUsuarioException ex) {
 
             //Precisa tratar aqui!
+        } catch (ComunicadosException ex) {
+            Logger.getLogger(UsuarioBean.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         setNome(null);
@@ -92,10 +99,12 @@ public class UsuarioBean implements Serializable {
 
             this.professorServico.persistence(this.professor);
 
-        } catch (CadastroUsuarioException ex) {
+        } catch (CadastroUsuarioException | ComunicadosException ex) {
 
             //Precisa tratar aqui!
+            //Precisa tratar aqui!
         }
+      
 
         setNome(null);
         setEmail(null);
@@ -104,7 +113,7 @@ public class UsuarioBean implements Serializable {
 
     //Esse método pega os dados do usuário, se houver
     //PRECISA DE UM MÉTODO QUE REDIRECIONA PARA A PÁGINA APÓS O LOGIN OU TRATA O ERRO QUANDO NAO HOUVER USER CADASTRADO
-    public void pegarUsuario() {
+    public void pegarUsuario() throws IOException {
 
         Usuario usuario = usuarioServico.getUserPorEmail(email);
 
@@ -178,8 +187,8 @@ public class UsuarioBean implements Serializable {
         return professorServico;
     }
 
-    private String enviarParaFeed() {
-        return "feedComunicados?faces-redirect=true";
+    private void enviarParaFeed() throws IOException {
+         FacesContext.getCurrentInstance().getExternalContext().redirect("feedComunicados.xhtml");
     }
 
 }
