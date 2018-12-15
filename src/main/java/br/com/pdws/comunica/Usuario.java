@@ -40,7 +40,7 @@ import javax.validation.constraints.Size;
         {
             @NamedQuery(
                     name = Usuario.USUARIO_POR_EMAIL,
-                    query = "SELECT u FROM Usuario u where u.email LIKE :email "
+                    query = "SELECT u FROM Usuario u where u.email LIKE ?1 "
             )
 
         }

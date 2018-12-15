@@ -22,58 +22,59 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean(name = "usuarioBean")
 @RequestScoped
 public class UsuarioBean implements Serializable {
-   
+
     private Aluno aluno;
     private String nome;
     private String email;
     private String senha;
     private Professor professor;
     private String tipo;
-    
-    
+
     @EJB
     AlunoServico alunoServico;
     @EJB
     ProfessorServico professorServico;
     @EJB
     UsuarioServico usuarioServico;
+
     //Inicia o serviço de aluno e professor
     @PostConstruct
     public void iniciar() {
-        
+
         aluno = alunoServico.create();
         professor = professorServico.create();
         tipo = new String();
     }
-    
+
     //Verifica o tipo do o usuário a ser cadastrado e redireciona para o método de persistencia de acordo com o tipo
-    public void checaTipoUsuario(){
-        
-        if(this.tipo.equals("Estudante")){
-            
+    public void checaTipoUsuario() {
+
+        if (this.tipo.equals("Estudante")) {
+
             salvarAluno();
-            
-        }else if(this.tipo.equals("Professor")){
-           
+
+        } else if (this.tipo.equals("Professor")) {
+
             salvarProfessor();
         }
     }
 //Faz o envio de aluno
+
     public void salvarAluno() {
-        
+
         this.aluno.setName(nome);
         this.aluno.setEmail(email);
         this.aluno.setSenha(senha);
 
         try {
-            
+
             this.alunoServico.persistence(this.aluno);
-            
+
         } catch (CadastroUsuarioException ex) {
-            
+
             //Precisa tratar aqui!
         }
-        
+
         setNome(null);
         setEmail(null);
         setSenha(null);
@@ -81,37 +82,36 @@ public class UsuarioBean implements Serializable {
     }
     //Faz o envio de professor
 
-    public void salvarProfessor(){
-        
+    public void salvarProfessor() {
+
         this.professor.setName(nome);
         this.professor.setEmail(email);
         this.professor.setSenha(senha);
 
         try {
-            
+
             this.professorServico.persistence(this.professor);
-            
+
         } catch (CadastroUsuarioException ex) {
-            
+
             //Precisa tratar aqui!
         }
-        
+
         setNome(null);
         setEmail(null);
         setSenha(null);
     }
-    
+
     //Esse método pega os dados do usuário, se houver
     //PRECISA DE UM MÉTODO QUE REDIRECIONA PARA A PÁGINA APÓS O LOGIN OU TRATA O ERRO QUANDO NAO HOUVER USER CADASTRADO
-    public void pegarUsuario(){
-        
+    public void pegarUsuario() {
+
         Usuario usuario = usuarioServico.getUserPorEmail(email);
-        
-            if(usuario != null && usuario.getSenha().equals(senha))
-                
-                ObjetosSessaoManager.guardarObjetoSessao("usuario", usuario);
-            
-                enviarParaFeed();
+
+        if (usuario != null && usuario.getSenha().equals(senha)) {
+            ObjetosSessaoManager.guardarObjetoSessao("usuario", usuario);
+            enviarParaFeed();
+        }
     }
 
     public void setAluno(Aluno aluno) {
@@ -179,8 +179,7 @@ public class UsuarioBean implements Serializable {
     }
 
     private String enviarParaFeed() {
-        
-           return "Feed?faces-redirect";
+        return "feedComunicados?faces-redirect=true";
     }
-   
+
 }

@@ -65,12 +65,9 @@ public class Comunicado implements Serializable {
     private String texto;
 
     //Define uma coleção de elementos apontada para a coluna TAGS (array de tags)
-    @ElementCollection
-    @CollectionTable(name = "TB_TAGS",
-            joinColumns = @JoinColumn(name = "ID"))
-
-    @Column(name = "TXT_TAGS")
-    protected Collection<String> tags;
+    @OneToMany
+    @JoinColumn(name = "ID_TAG", referencedColumnName = "ID")
+    private Collection<String> tags;
 
     //Um para muitos (um comunicado pode ter varios comentarios)
     @OneToMany(mappedBy = "comunicado", fetch = FetchType.LAZY,

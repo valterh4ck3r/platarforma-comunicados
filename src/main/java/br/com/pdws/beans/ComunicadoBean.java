@@ -4,16 +4,21 @@ import br.com.pdws.comunica.Aluno;
 import br.com.pdws.comunica.Comentario;
 import br.com.pdws.comunica.Comunicado;
 import br.com.pdws.comunica.Professor;
+import br.com.pdws.comunica.Tag;
 import br.com.pdws.comunica.Usuario;
+import br.com.pdws.excecoes.CadastroUsuarioException;
 import br.com.pdws.servico.AlunoServico;
 import br.com.pdws.servico.ComentarioServico;
 import br.com.pdws.servico.ComunicadoServico;
 import br.com.pdws.servico.ProfessorServico;
+import br.com.pdws.servico.TagServico;
 import br.com.pdws.servico.UsuarioServico;
 import br.com.pdws.util.ObjetosSessaoManager;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -39,17 +44,33 @@ public class ComunicadoBean implements Serializable {
     private Comunicado comunicado;
     private Comentario comentario;
     private Date dataCriacao;
+    private Tag tag1;
+
+    public Tag getTag1() {
+        return tag1;
+    }
+
+    public void setTag1(Tag tag1) {
+        this.tag1 = tag1;
+    }
 
     @EJB
     AlunoServico alunoServico;
+    
     @EJB
     ProfessorServico professorServico;
+    
     @EJB
     UsuarioServico usuarioServico;
+    
     @EJB
     ComunicadoServico comunicadoServico;
+    
     @EJB
     ComentarioServico comentarioServico;
+    
+    @EJB
+    TagServico tagServico;
 
     //Inicia o serviço
     @PostConstruct
@@ -62,15 +83,28 @@ public class ComunicadoBean implements Serializable {
 
 //Faz o envio do counicado
     public void salvarComunicado() {
-        this.comunicado.addTags(tag);
-        this.comunicado.setID(ObjetosSessaoManager.pegarObjetoSessao(id));
+//        this.comunicado.addTags(tag);
+        this.comunicado.setID( (Long) ObjetosSessaoManager.pegarObjetoSessao(Long.toString(id)));
         this.comunicado.setTexto(texto);
         this.comunicado.setProfessor(professor);
         this.comunicado.setDataCriacao(dataCriacao);
+        this.comunicado.
 
         setTexto(null);
         setProfessor(null);
         setDataCriacao(null);
+    }
+    
+    public void inserirTag(){
+        try {
+            tagServico.persistence(tag1);
+        } catch (CadastroUsuarioException ex) {
+            Logger.getLogger(ComunicadoBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void addTagComunicado(){
+        this.comunicado.addTags(tag);
     }
 
     public List<Comunicado> getComunicados() {

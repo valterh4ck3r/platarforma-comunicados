@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import org.hibernate.validator.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -35,12 +36,8 @@ public class Tag implements Serializable {
     @Column(name = "TXT_NOME", nullable = false, length = 50)
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "TB_TAG_USUARIO", joinColumns = {
-        @JoinColumn(name = "ID_TAG")},
-            inverseJoinColumns = {
-                @JoinColumn(name = "ID_USUARIO")})
-    private List<Usuario> usuarios;
+    @ManyToOne(fetch=FetchType.LAZY, optional = false)
+    private Comunicado comunicado;
 
     public Long getId() {
         return id;
@@ -58,12 +55,14 @@ public class Tag implements Serializable {
         this.name = name;
     }
 
-    public List<Usuario> getUsuarios() {
-        return usuarios;
+    public Comunicado getComunicado() {
+        return comunicado;
     }
 
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
+    public void setComunicado(Comunicado comunicado) {
+        this.comunicado = comunicado;
     }
+
+
 
 }

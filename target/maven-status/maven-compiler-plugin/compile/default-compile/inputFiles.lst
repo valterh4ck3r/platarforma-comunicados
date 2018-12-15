@@ -1,17 +1,20 @@
-/home/laura/Documentos/2018-2/Projeto-Web/Comunica-master-bug/platarforma-comunicados/src/main/java/br/com/pdws/servico/UsuarioServico.java
-/home/laura/Documentos/2018-2/Projeto-Web/Comunica-master-bug/platarforma-comunicados/src/main/java/br/com/pdws/excecoes/CadastroUsuarioException.java
-/home/laura/Documentos/2018-2/Projeto-Web/Comunica-master-bug/platarforma-comunicados/src/main/java/br/com/pdws/comunica/Professor.java
-/home/laura/Documentos/2018-2/Projeto-Web/Comunica-master-bug/platarforma-comunicados/src/main/java/br/com/pdws/comunica/Usuario.java
-/home/laura/Documentos/2018-2/Projeto-Web/Comunica-master-bug/platarforma-comunicados/src/main/java/br/com/pdws/comunica/Tag.java
-/home/laura/Documentos/2018-2/Projeto-Web/Comunica-master-bug/platarforma-comunicados/src/main/java/br/com/pdws/comunica/Util.java
-/home/laura/Documentos/2018-2/Projeto-Web/Comunica-master-bug/platarforma-comunicados/src/main/java/br/com/pdws/comunica/Comentario.java
-/home/laura/Documentos/2018-2/Projeto-Web/Comunica-master-bug/platarforma-comunicados/src/main/java/br/com/pdws/servico/ProfessorServico.java
-/home/laura/Documentos/2018-2/Projeto-Web/Comunica-master-bug/platarforma-comunicados/src/main/java/br/com/pdws/servico/AlunoServico.java
-/home/laura/Documentos/2018-2/Projeto-Web/Comunica-master-bug/platarforma-comunicados/src/main/java/br/com/pdws/comunica/Entidade.java
-/home/laura/Documentos/2018-2/Projeto-Web/Comunica-master-bug/platarforma-comunicados/src/main/java/br/com/pdws/servico/Servico.java
-/home/laura/Documentos/2018-2/Projeto-Web/Comunica-master-bug/platarforma-comunicados/src/main/java/br/com/pdws/beans/UsuarioBean.java
-/home/laura/Documentos/2018-2/Projeto-Web/Comunica-master-bug/platarforma-comunicados/src/main/java/br/com/pdws/comunica/ValidadorTag.java
-/home/laura/Documentos/2018-2/Projeto-Web/Comunica-master-bug/platarforma-comunicados/src/main/java/br/com/pdws/comunica/Aluno.java
-/home/laura/Documentos/2018-2/Projeto-Web/Comunica-master-bug/platarforma-comunicados/src/main/java/br/com/pdws/comunica/ValidaTag.java
-/home/laura/Documentos/2018-2/Projeto-Web/Comunica-master-bug/platarforma-comunicados/src/main/java/br/com/pdws/util/ObjetosSessaoManager.java
-/home/laura/Documentos/2018-2/Projeto-Web/Comunica-master-bug/platarforma-comunicados/src/main/java/br/com/pdws/comunica/Comunicado.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/comunica/Comentario.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/comunica/Entidade.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/servico/ComunicadoServico.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/beans/UsuarioBean.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/servico/ComentarioServico.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/excecoes/CadastroUsuarioException.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/comunica/Comunicado.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/beans/ComunicadoBean.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/comunica/Usuario.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/comunica/Aluno.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/comunica/ValidadorTag.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/servico/ProfessorServico.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/comunica/Util.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/util/ObjetosSessaoManager.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/comunica/Professor.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/comunica/Tag.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/servico/Servico.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/comunica/ValidaTag.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/servico/UsuarioServico.java
+/home/bernardes/Área de Trabalho/platarforma-comunicados/src/main/java/br/com/pdws/servico/AlunoServico.java
